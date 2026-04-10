@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DGMATION STUDIOS</title>
+    <meta
+      name="description"
+      content="Landing page de DGMATION STUDIOS enfocada en UX/UI, branding, motion design y 3D visualization."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="header">
+        <div class="container navbar">
+            <a href="#hero" class="logo">
+            <img
+                src="assets/images/logo-white.png"
+                alt="Logo dgmationstudios"
+            />
+            </a>
+
+            <button
+              class="menu-toggle"
+              type="button"
+              aria-label="Abrir menú"
+              aria-expanded="false"
+              aria-controls="mobile-menu"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+
+            <div class="nav-group" id="mobile-menu">
+              <nav class="nav">
+                  <a href="#hero">Inicio</a>
+                  <a href="#portfolio">Portafolio</a>
+                  <a href="#services">Servicios</a>
+                  <a href="#about">Nosotros</a>
+              </nav>
+
+              <a href="#contact" class="btn btn-light nav-contact">Contacto</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+      <section class="hero" id="hero">
+        <div class="container hero-grid">
+          <div class="hero-content">
+            <p class="eyebrow">Innovación visual en tiempo real</p>
+              <h1 class="hero-title">
+                <span class="hero-title-line">Diseño.</span>
+                <span class="hero-title-line">Movimiento.</span>
+                <span class="hero-title-line">Experiencia.</span>
+              </h1>
+            <p class="hero-description">
+              Fusionamos UX/UI, animación y 3D para construir productos digitales con impacto real.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#portfolio" class="btn hero-btn hero-btn-primary">
+                <span class="hero-btn-text">Ver Portafolio</span>
+                  <span class="hero-btn-icon hero-btn-arrow" aria-hidden="true">
+                    <img
+                      src="assets/images/arrow-icon.svg"
+                      alt="arrow icon"
+                    />
+                </span>
+              </a>
+
+              <a href="#showreel" class="btn hero-btn hero-btn-showreel">
+                <span class="hero-btn-play" aria-hidden="true">
+                  <span class="play-icon">▶</span>
+                </span>
+                <span class="hero-btn-text">Showreel 2024</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="hero-media-frame">
+              <video
+                class="hero-video"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+              >
+                <source src="assets/videos/hero_video.mp4" type="video/mp4" />
+                Tu navegador no soporta video HTML5.
+              </video>
+            </div>
+          </div>
+        </div>
+        <div class="hero-scroll">
+          <span class="hero-scroll-text">Scroll</span>
+          <span class="hero-scroll-line"></span>
+        </div>
+      </section>
+
+      <section class="portfolio" id="portfolio">
+        <div class="container">
+          <div class="section-heading section-heading-center">
+            <p class="section-label">Portafolio</p>
+            <h2>Trabajos Destacados</h2>
+          </div>
+
+          <div class="portfolio-grid">
+            <article class="project-card project-card-large">
+              <img src="assets/images/velfare-image.png" alt="Rediseño de portal corporativo" />
+              <div class="project-overlay">
+                <p class="project-tag">Diseño Mobile</p>
+                <h3>Velfare App</h3>
+                <p class="project-description">
+                  Aplicación enfocada en nutrición personalizada con experiencia intuitiva y visual.
+                </p>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <img src="assets/images/pistola-image.jpg" alt="Identity Luxury Apps" />
+              <div class="project-overlay">
+                <p class="project-tag">Modelado 3D</p>
+                <h3>Pistola Quirúrgica</h3>
+                <p class="project-description">
+                  Aplicación enfocada en nutrición personalizada con experiencia intuitiva y visual.
+                </p>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <img src="assets/images/kuvik-image.jpg" alt="SaaS Dashboard V2" />
+              <div class="project-overlay">
+                <p class="project-tag">Diseño Web</p>
+                <h3>Kuvik</h3>
+                <p class="project-description">
+                  Aplicación enfocada en nutrición personalizada con experiencia intuitiva y visual.
+                </p>
+              </div>
+            </article>
+          </div>
+
+          <div class="section-cta">
+            <a href="#contact" class="btn btn-outline-light">Ver Portafolio</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="services" id="services">
+        <div class="container">
+          <div class="section-heading section-heading-center">
+            <p class="section-label">Servicios</p>
+            <h2>Soluciones de Alto Impacto</h2>
+            <p>
+              Transformando ideas en experiencias digitales memorables a través del diseño estratégico, el movimiento y la profundidad visual.
+            </p>
+          </div>
+
+          <div class="services-grid">
+            <article class="service-card">
+              <div class="service-icon">
+                <img
+                    src="assets/images/uxui-icon.svg"
+                     alt="uxui icon"
+                 />
+                </div>
+              <h3>UX/UI Design</h3>
+              <p>
+                Interfaces y flujos centrados en el usuario para experiencias optimizadas para conversión.
+              </p>
+              <a href="#contact" class="service-link">
+                <img
+                  src="assets/images/diagonal-arrow-icon.svg"
+                   alt="diagonal arrow icon"
+                />
+              </a>
+            </article>
+
+            <article class="service-card">
+              <div class="service-icon">
+                <img
+                  src="assets/images/brand-icon.svg"
+                   alt="brand icon"
+                />
+              </div>
+              <h3>Branding & Graphic</h3>
+              <p>
+                Identidad visual coherente, logotipos memorables y sistemas de marca para empresas modernas.
+              </p>
+              <a href="#contact" class="service-link">
+                <img
+                  src="assets/images/diagonal-arrow-icon.svg"
+                   alt="diagonal arrow icon"
+                />
+              </a>
+            </article>
+
+            <article class="service-card">
+              <div class="service-icon">
+                <img
+                  src="assets/images/motion-icon.svg"
+                   alt="motion icon"
+                />
+              </div>
+              <h3>Motion Design</h3>
+              <p>
+                Animaciones fluidas para reels, social media y presentaciones que capturan la atención instantáneamente.
+              </p>
+              <a href="#contact" class="service-link">
+                <img
+                  src="assets/images/diagonal-arrow-icon.svg"
+                   alt="diagonal arrow icon"
+                />
+              </a>
+            </article>
+
+            <article class="service-card">
+              <div class="service-icon">
+                <img
+                  src="assets/images/3d-icon.svg"
+                   alt="3d icon"
+                />
+              </div>
+              <h3>3D Visualization</h3>
+              <p>
+                Modelado, renderizado y visualización de productos y entornos atractivos.
+              </p>
+              <a href="#contact" class="service-link">
+                <img
+                  src="assets/images/diagonal-arrow-icon.svg"
+                   alt="diagonal arrow icon"
+                />
+              </a>
+            </article>
+          </div>
+
+          <!--  
+          <div class="section-cta">
+            <a href="#contact" class="btn btn-outline">Hablemos de tu proyecto</a>
+          </div>
+          -->
+        </div>
+      </section>
+    
+      
+      <section class="about" id="about">
+        <div class="container about-grid">
+          <article class="profile-card">
+            <img src="assets/images/profile-portrait.png" alt="Retrato de David González" />
+            <div class="profile-info">
+              <p class="profile-role">Creative Director</p>
+              <h2>David González</h2>
+            </div>
+          </article>
+
+          <div class="about-content">
+            <p class="section-label">Nosotros</p>
+            <h2>
+              Transformando <span>Visiones</span> en<br />
+              Realidades Digitales.
+            </h2>
+            <p>
+              Licenciado en Diseño Digital por la Universidad Creativa de México, he dedicado más de 8 años a perfeccionar el arte de la comunicación visual a través de medios interactivos. Mi enfoque combina el rigor del UX con la libertad expresiva del 3D.
+            </p>
+
+            <div class="skills-grid">
+              <article class="skill-card">
+                <h3>Diseño UX/UI</h3>
+                <p>Figma, Adobe XD, HTML/CSS</p>
+              </article>
+
+              <article class="skill-card">
+                <h3>CGI & 3D</h3>
+                <p>Blender, Cinema 4D, Octane</p>
+              </article>
+
+              <article class="skill-card">
+                <h3>Animación</h3>
+                <p>After Effects, Lottie</p>
+              </article>
+
+              <article class="skill-card">
+                <h3>Creatividad</h3>
+                <p>Conceptualización, Storytelling</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-banner" id="contact">
+        <div class="container">
+          <div class="cta-box">
+            <h2>¿Listo para llevar tu visión al 10X?</h2>
+            <p>
+              Estamos listos para transformar tus desafíos en experiencias de usuario excepcionales.
+            </p>
+            <a href="mailto:dreamingout1056@gmail.com" class="btn btn-light cta-contact">Contáctame</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div>
+          <a href="#hero" class="logo footer-logo">
+            <img
+                src="assets/images/logo-purple-white.svg"
+                alt="Logo dgmationstudios"
+            />
+          </a>
+          <p>
+            Estudio creativo especializado en transformar la visión de líderes mundiales en realidades digitales palpables.
+          </p>
+        </div>
+
+        <div>
+          <h3>Explorar</h3>
+          <ul>
+            <li><a href="#portfolio">Portafolio</a></li>
+            <li><a href="#about">Agencia</a></li>
+            <li><a href="#services">Carreras</a></li>
+            <li><a href="#contact">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Social</h3>
+          <ul>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Behance</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">
+        <p>© 2026 DGMATION STUDIOS. TODOS LOS DERECHOS RESERVADOS.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
