@@ -56,9 +56,40 @@ function initHeroAnimation() {
 }
 
 // ==============================
+// SERVICES REVEAL ON SCROLL
+// ==============================
+function initServicesReveal() {
+  const servicesSection = document.querySelector(".services");
+  const servicesHeading = document.querySelector(".services-heading");
+  const serviceCards = document.querySelectorAll(".service-card");
+
+  if (!servicesSection || !servicesHeading || !serviceCards.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        servicesHeading.classList.add("is-visible");
+        serviceCards.forEach((card) => card.classList.add("is-visible"));
+
+        obs.unobserve(entry.target);
+      });
+    },
+    {
+      threshold: 0.35,
+      rootMargin: "0px 0px -40px 0px",
+    }
+  );
+
+  observer.observe(servicesSection);
+}
+
+// ==============================
 // INIT GENERAL
 // ==============================
 document.addEventListener("DOMContentLoaded", () => {
   initMobileMenu();
   initHeroAnimation();
+  initServicesReveal();
 });
