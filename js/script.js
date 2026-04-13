@@ -93,26 +93,44 @@ function initShowreelModal() {
   const modal = document.getElementById("showreelModal");
   const closeBtn = document.getElementById("closeShowreel");
   const overlay = document.getElementById("showreelOverlay");
-  const video = document.getElementById("showreelVideo");
+  const videoWrap = document.getElementById("showreelVideoWrap");
 
-  if (!openBtn || !modal || !closeBtn || !overlay || !video) return;
+  if (!openBtn || !modal || !closeBtn || !overlay || !videoWrap) return;
+
+  // Pega aquí el ID de tu video de YouTube
+  const youtubeVideoId = "wjB_gJ43QNQ";
+
+  const createIframe = () => {
+    if (videoWrap.querySelector("iframe")) return;
+
+    const iframe = document.createElement("iframe");
+    iframe.className = "showreel-video-player";
+    iframe.src = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&rel=0&modestbranding=1&controls=1&playsinline=1`;
+    iframe.title = "Showreel 2024";
+    iframe.allow =
+      "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    iframe.allowFullscreen = true;
+
+    videoWrap.appendChild(iframe);
+  };
+
+  const destroyIframe = () => {
+    videoWrap.innerHTML = "";
+  };
 
   const openModal = (event) => {
     event.preventDefault();
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
     document.body.classList.add("modal-open");
-
-    video.play();
+    createIframe();
   };
 
   const closeModal = () => {
     modal.classList.remove("is-open");
     modal.setAttribute("aria-hidden", "true");
     document.body.classList.remove("modal-open");
-
-    video.pause();
-    video.currentTime = 0;
+    destroyIframe();
   };
 
   openBtn.addEventListener("click", openModal);
