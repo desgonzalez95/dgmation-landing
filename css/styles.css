@@ -1151,6 +1151,129 @@ ul {
   white-space: nowrap; /* 🔥 evita que se rompa en 2 líneas */
 }
 
+/* =========================
+   SHOWREEL MODAL
+========================= */
+.showreel-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.showreel-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.showreel-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 3, 10, 0.82);
+  backdrop-filter: blur(10px);
+}
+
+.showreel-modal-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 1080px);
+  border-radius: 24px;
+  padding: 24px 24px 20px;
+  background: rgba(12, 8, 24, 0.92);
+  border: 1px solid rgba(124, 61, 255, 0.22);
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.4);
+  transform: translateY(18px) scale(0.98);
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.showreel-modal.is-open .showreel-modal-dialog {
+  transform: translateY(0) scale(1);
+}
+
+.showreel-title {
+  margin: 0 0 16px;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.showreel-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.showreel-close:hover {
+  background: rgba(124, 61, 255, 0.9);
+  transform: scale(1.05);
+}
+
+.showreel-video-wrap {
+  overflow: hidden;
+  border-radius: 18px;
+  background: #000000;
+  aspect-ratio: 16 / 9;
+}
+
+.showreel-video-player {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #000000;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .showreel-modal {
+    padding: 16px;
+  }
+
+  .showreel-modal-dialog {
+    padding: 18px 18px 16px;
+    border-radius: 20px;
+  }
+
+  .showreel-close {
+    top: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .showreel-title {
+    font-size: 0.9rem;
+    margin-bottom: 14px;
+    padding-right: 44px;
+  }
+}
+
 
 /* =========================
    RESPONSIVE

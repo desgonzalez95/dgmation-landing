@@ -86,12 +86,54 @@ function initServicesReveal() {
 }
 
 // ==============================
+// SHOWREEL MODAL
+// ==============================
+function initShowreelModal() {
+  const openBtn = document.getElementById("openShowreel");
+  const modal = document.getElementById("showreelModal");
+  const closeBtn = document.getElementById("closeShowreel");
+  const overlay = document.getElementById("showreelOverlay");
+  const video = document.getElementById("showreelVideo");
+
+  if (!openBtn || !modal || !closeBtn || !overlay || !video) return;
+
+  const openModal = (event) => {
+    event.preventDefault();
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+
+    video.play();
+  };
+
+  const closeModal = () => {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+
+    video.pause();
+    video.currentTime = 0;
+  };
+
+  openBtn.addEventListener("click", openModal);
+  closeBtn.addEventListener("click", closeModal);
+  overlay.addEventListener("click", closeModal);
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modal.classList.contains("is-open")) {
+      closeModal();
+    }
+  });
+}
+
+// ==============================
 // INIT GENERAL
 // ==============================
 document.addEventListener("DOMContentLoaded", () => {
   initMobileMenu();
   initHeroAnimation();
   initServicesReveal();
+  initShowreelModal();
 });
 
 // ==============================
