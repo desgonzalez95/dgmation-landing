@@ -9,6 +9,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -16,6 +17,7 @@ body {
   background: #0A0A0F;
   color: #17151f;
   line-height: 1.5;
+  overflow-x: hidden;
 }
 
 img {
@@ -1152,6 +1154,96 @@ ul {
 }
 
 /* =========================
+   FOOTER SOCIAL
+========================= */
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.footer-social li {
+  list-style: none;
+}
+
+.footer-social a {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease;
+}
+
+.footer-social a:hover {
+  transform: translateY(-1px);
+}
+
+.footer-social svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.footer-social svg path,
+.footer-social svg rect {
+  transition: fill 0.25s ease;
+}
+
+/* LinkedIn */
+.footer-social .social-linkedin:hover svg path {
+  fill: #ffffff;
+}
+
+/* Instagram, YouTube, Behance */
+.footer-social .social-instagram:hover svg rect,
+.footer-social .social-youtube:hover svg rect,
+.footer-social .social-behance:hover svg rect {
+  fill: #ffffff;
+}
+
+.footer-social .social-instagram:hover svg path,
+.footer-social .social-youtube:hover svg path,
+.footer-social .social-behance:hover svg path {
+  fill: #090513;
+}
+
+.footer .footer-social {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: nowrap;
+  padding: 0;
+  margin: 0;
+}
+
+.footer .footer-social li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer .footer-social a {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease;
+}
+
+.footer .footer-social a:hover {
+  transform: translateY(-1px);
+}
+
+.footer .footer-social svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+/* =========================
    SHOWREEL MODAL
 ========================= */
 .showreel-modal {
@@ -1362,11 +1454,18 @@ body.modal-open {
   .profile-card {
     min-height: 460px;
   }
+
+  .project-card:hover,
+  .service-card:hover,
+  .service-card.is-visible:hover {
+    transform: none;
+  }
 }
 
 @media (max-width: 560px) {
   .container {
-    width: min(100% - 28px, var(--container));
+    width: min(100% - 24px, var(--container));
+    margin-inline: auto;
   }
 
   .hero,
@@ -1388,5 +1487,31 @@ body.modal-open {
 
   .cta-box {
     padding: 56px 18px;
+  }
+
+  .hero,
+  .about,
+  .services,
+  .portfolio,
+  .footer {
+    overflow-x: hidden;
+  }
+
+  .project-card,
+  .project-card-large,
+  .service-card,
+  .cta-box,
+  .hero-visual,
+  .hero-media-frame,
+  .hero-video {
+    max-width: 100%;
+  }
+
+  img,
+  video,
+  iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
   }
 }
