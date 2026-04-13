@@ -1443,6 +1443,10 @@ body.modal-open {
     justify-content: center;
   }
 
+  .hero-visual {
+    min-height: 420px;
+  }
+
   .portfolio-grid,
   .skills-grid,
   .services-grid {
