@@ -59,7 +59,7 @@ ul {
   --radius-sm: 14px;
   --radius-md: 22px;
   --radius-lg: 32px;
-  --container: 1180px;
+  --container: 1320px;
 }
 
 /* =========================
@@ -333,7 +333,8 @@ ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 32px;
+  min-height: 72px;
 }
 
 .logo {
@@ -360,14 +361,14 @@ ul {
 .nav-group {
   display: flex;
   align-items: center;
-  gap: 26px; /* distancia entre menú y botón */
+  gap: 28px; /* distancia entre menú y botón */
   margin-left: auto;
 }
 
 .nav {
   display: flex;
   align-items: center;
-  gap: 38px; /* distancia entre links */
+  gap: 34px; /* distancia entre links */
 }
 
 .nav a {
@@ -749,7 +750,7 @@ ul {
 }
 
 .service-card {
-  min-height: 290px;
+  min-height: 400px;
   display: flex;
   flex-direction: column;
   padding: 40px;
@@ -1093,15 +1094,16 @@ ul {
    FOOTER
 ========================= */
 .footer {
-  padding: 70px 0 70px;
+  padding: 78px 0 70px;
   background: #090513;
   color: var(--text-light);
 }
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.2fr 0.7fr 0.7fr;
-  gap: 40px;
+  grid-template-columns: 1.25fr 0.7fr 0.7fr;
+  gap: 48px;
+  align-items: start;
 }
 
 .footer-logo {
@@ -1109,7 +1111,7 @@ ul {
 }
 
 .footer p {
-  max-width: 360px;
+  max-width: 380px;
   color: var(--text-muted-light);
 }
 
@@ -1128,6 +1130,7 @@ ul {
 
 .footer li a {
   color: var(--text-muted-light);
+  transition: color 0.2s ease;
 }
 
 .footer li a:hover {
@@ -1152,68 +1155,17 @@ ul {
   text-transform: uppercase;
   color: var(--text-muted-light);
   text-align: center;
-  white-space: nowrap; /* 🔥 evita que se rompa en 2 líneas */
+
+  white-space: nowrap;       /* 🔥 permite salto de línea */
+  line-height: 1.6;
+  padding: 0 10px;           /* 🔥 aire lateral en mobile */
 }
 
 /* =========================
    FOOTER SOCIAL
 ========================= */
-.footer-social {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-
-.footer-social li {
-  list-style: none;
-}
-
-.footer-social a {
-  width: 24px;
-  height: 24px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.25s ease;
-}
-
-.footer-social a:hover {
-  transform: translateY(-1px);
-}
-
-.footer-social svg {
-  display: block;
-  width: 24px;
-  height: 24px;
-}
-
-.footer-social svg path,
-.footer-social svg rect {
-  transition: fill 0.25s ease;
-}
-
-/* LinkedIn */
-.footer-social .social-linkedin:hover svg path {
-  fill: #ffffff;
-}
-
-/* Instagram, YouTube, Behance */
-.footer-social .social-instagram:hover svg rect,
-.footer-social .social-youtube:hover svg rect,
-.footer-social .social-behance:hover svg rect {
-  fill: #ffffff;
-}
-
-.footer-social .social-instagram:hover svg path,
-.footer-social .social-youtube:hover svg path,
-.footer-social .social-behance:hover svg path {
-  fill: #090513;
-}
-
 .footer .footer-social {
   display: flex;
-  flex-direction: row;
   align-items: center;
   gap: 16px;
   flex-wrap: nowrap;
@@ -1244,6 +1196,29 @@ ul {
   display: block;
   width: 24px;
   height: 24px;
+}
+
+.footer .footer-social svg path,
+.footer .footer-social svg rect {
+  transition: fill 0.25s ease;
+}
+
+/* LinkedIn */
+.footer .footer-social .social-linkedin:hover svg path {
+  fill: #ffffff;
+}
+
+/* Instagram, YouTube, Behance */
+.footer .footer-social .social-instagram:hover svg rect,
+.footer .footer-social .social-youtube:hover svg rect,
+.footer .footer-social .social-behance:hover svg rect {
+  fill: #ffffff;
+}
+
+.footer .footer-social .social-instagram:hover svg path,
+.footer .footer-social .social-youtube:hover svg path,
+.footer .footer-social .social-behance:hover svg path {
+  fill: #090513;
 }
 /* =========================
    SHOWREEL MODAL
@@ -1453,6 +1428,10 @@ body.modal-open {
     grid-template-columns: 1fr;
   }
 
+  .portfolio-grid {
+    gap: 24px;
+  }
+
   .project-card-large {
     min-height: 360px;
   }
@@ -1466,33 +1445,42 @@ body.modal-open {
   .service-card.is-visible:hover {
     transform: none;
   }
+
+  .footer-grid {
+  grid-template-columns: 1fr;
+  text-align: center;
+  gap: 64px;
+  }
+
+  .footer-grid > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .footer-logo {
+    display: flex;
+    justify-content: center;
+  }
+
+  .footer p {
+    margin-inline: auto;
+  }
+
+  .footer ul {
+    justify-content: center;
+  }
+
+  .footer-social {
+    justify-content: center;
+  }
 }
 
 @media (max-width: 560px) {
   .container {
-    width: min(100% - 24px, var(--container));
+    width: min(100% - 32px, var(--container));
     margin-inline: auto;
-  }
-
-  .hero,
-  .about,
-  .services,
-  .portfolio {
-    padding-top: 72px;
-    padding-bottom: 72px;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .btn {
-    width: 100%;
-  }
-
-  .cta-box {
-    padding: 56px 18px;
   }
 
   .hero,
@@ -1500,9 +1488,74 @@ body.modal-open {
   .services,
   .portfolio,
   .footer {
+    padding-top: 72px;
+    padding-bottom: 72px;
     overflow-x: hidden;
   }
 
+  /* HERO */
+  .hero {
+    text-align: center;
+  }
+
+  .hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+
+  .eyebrow {
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .hero-title,
+  .hero h1 {
+    width: 100%;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .hero-title-line {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-description,
+  .hero p {
+    text-align: center;
+    margin-inline: auto;
+    max-width: 90%;
+  }
+
+  .hero-actions {
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  }
+
+  .hero-actions .btn,
+  .hero-actions .hero-btn {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* CTA */
+  .cta-box {
+    padding: 56px 18px;
+  }
+
+  /* FOOTER */
+  .footer-bottom p {
+    white-space: normal;
+    line-height: 1.6;
+    padding: 0 10px;
+  }
+
+  /* MEDIA / ELEMENTOS VISUALES */
   .project-card,
   .project-card-large,
   .service-card,
