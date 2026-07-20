@@ -139,7 +139,7 @@ ul {
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: -0.01em;
-  gap: 14px;
+  gap: 2px;
 }
 
 .hero-btn-text {
@@ -1103,7 +1103,7 @@ ul {
   margin: 0 auto 16px;
   font-size: clamp(2.2rem, 5vw, 4.8rem);
   line-height: 0.98;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
 }
 

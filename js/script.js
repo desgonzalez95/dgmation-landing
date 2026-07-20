@@ -34,7 +34,7 @@ function initHeroAnimation() {
   const heroPhrases = [
     ["Diseño.", "Movimiento.", "Experiencia."],
     ["Interfaces.", "Animación.", "Impacto."],
-    ["UX/UI.", "3D.", "Narrativa."],
+    ["UX/UI.", "3D.", "Branding."],
     ["Concepto.", "Forma.", "Resultado."],
   ];
 
