@@ -136,13 +136,14 @@ ul {
   min-height: 74px;
   padding: 0 28px;
   border-radius: 20px;
-  font-size: 1rem;
+  font-size: 0.92rem;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.06em;
   gap: 2px;
 }
 
 .hero-btn-text {
+  text-transform: uppercase;
   display: inline-flex;
   align-items: center;
 }
@@ -179,9 +180,10 @@ ul {
 .hero-btn-showreel {
   position: relative;
   overflow: hidden;
-  min-width: 270px;
+  min-width: 260px;
   justify-content: center;
   padding: 0 30px 0 22px;
+  gap: 12px;
   background: rgba(7, 4, 16, 0.72);
   color: #ffffff;
   border: 1px solid rgba(124, 61, 255, 0.85);
