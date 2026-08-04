@@ -145,6 +145,57 @@ function initShowreelModal() {
 }
 
 // ==============================
+// CONTACT MODAL
+// ==============================
+function initContactModal() {
+  const openButtons = document.querySelectorAll(".js-open-contact");
+  const modal = document.getElementById("contactModal");
+  const closeButton = document.getElementById("closeContactModal");
+  const overlay = document.getElementById("contactOverlay");
+
+  if (!openButtons.length || !modal || !closeButton || !overlay) return;
+
+  let lastFocusedElement = null;
+
+  const openModal = (event) => {
+    event.preventDefault();
+
+    lastFocusedElement = document.activeElement;
+
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+
+    window.setTimeout(() => {
+      closeButton.focus();
+    }, 100);
+  };
+
+  const closeModal = () => {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+
+    if (lastFocusedElement) {
+      lastFocusedElement.focus();
+    }
+  };
+
+  openButtons.forEach((button) => {
+    button.addEventListener("click", openModal);
+  });
+
+  closeButton.addEventListener("click", closeModal);
+  overlay.addEventListener("click", closeModal);
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modal.classList.contains("is-open")) {
+      closeModal();
+    }
+  });
+}
+
+// ==============================
 // INIT GENERAL
 // ==============================
 document.addEventListener("DOMContentLoaded", () => {
@@ -152,6 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeroAnimation();
   initServicesReveal();
   initShowreelModal();
+  initContactModal();
 });
 
 // ==============================
