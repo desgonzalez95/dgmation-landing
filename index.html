@@ -627,7 +627,7 @@
             <p class="contact-modal-eyebrow">Contacto</p>
 
             <h2 class="contact-modal-title" id="contactModalTitle">
-              Conversemos.
+              Hablemos.
             </h2>
 
             <p class="contact-modal-description">
@@ -707,7 +707,7 @@
                 </a>
 
                 <p class="contact-modal-detail-meta">
-                  Lun – Vie · 9:00 – 18:00 CST
+                  Lun – Dom · 9:00 – 18:00 CST
                 </p>
               </div>
             </div>
@@ -913,8 +913,18 @@
                   type="text"
                   autocomplete="name"
                   placeholder="Tu nombre"
+                  aria-describedby="nameError"
                   required
                 />
+
+                <p
+                  class="contact-form-error"
+                  id="nameError"
+                  aria-live="polite"
+                  hidden
+                >
+                  Escribe tu nombre completo.
+                </p>
               </div>
 
               <div class="contact-form-field">
@@ -929,14 +939,24 @@
                   type="email"
                   autocomplete="email"
                   placeholder="nombre@correo.com"
+                  aria-describedby="emailError"
                   required
                 />
+
+                <p
+                  class="contact-form-error"
+                  id="emailError"
+                  aria-live="polite"
+                  hidden
+                >
+                  Escribe un correo electrónico válido.
+                </p>
               </div>
             </div>
 
             <fieldset class="contact-service-fieldset">
               <legend>
-                ¿En qué te podemos ayudar?
+                ¿Qué servicio necesitas?
                 <span aria-hidden="true">*</span>
               </legend>
 
@@ -978,7 +998,12 @@
                 </label>
               </div>
 
-              <p class="contact-form-error" id="serviceError" hidden>
+              <p
+                class="contact-form-error"
+                id="serviceError"
+                aria-live="polite"
+                hidden
+              >
                 Selecciona al menos un servicio.
               </p>
             </fieldset>
@@ -994,12 +1019,22 @@
                 name="mensaje"
                 rows="7"
                 placeholder="Objetivo del proyecto, alcance, tiempos estimados y cualquier detalle que consideres importante."
+                aria-describedby="messageError"
                 required
               ></textarea>
+
+              <p
+                class="contact-form-error"
+                id="messageError"
+                aria-live="polite"
+                hidden
+              >
+                Cuéntanos brevemente sobre tu proyecto.
+              </p>
             </div>
 
-            <button class="contact-form-submit" type="submit">
-              <span>Enviar mensaje</span>
+            <button class="contact-form-submit" id="contactSubmit" type="submit">
+              <span class="contact-form-submit-text">Enviar mensaje</span>
 
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -1020,7 +1055,7 @@
             </button>
 
             <p class="contact-form-note">
-              Los campos marcados con <span aria-hidden="true">*</span> son obligatorios.
+              Te responderemos en un plazo de <strong>24 horas hábiles</strong>.
             </p>
           </form>
         </div>
