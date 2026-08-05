@@ -173,6 +173,11 @@ function initContactModal() {
 
   const submitButton = document.getElementById("contactSubmit");
 
+  const formView = document.getElementById("contactFormView");
+  const successView = document.getElementById("contactSuccessView");
+  const successButton = document.getElementById("contactSuccessButton");
+  const newMessageButton = document.getElementById("contactNewMessage");
+
   if (
     !openButtons.length ||
     !modal ||
@@ -188,7 +193,11 @@ function initContactModal() {
     !emailError ||
     !serviceError ||
     !messageError ||
-    !submitButton
+    !submitButton ||
+    !formView ||
+    !successView ||
+    !successButton ||
+    !newMessageButton  
   ) {
     return;
   }
@@ -216,6 +225,10 @@ function initContactModal() {
     modal.classList.remove("is-open");
     modal.setAttribute("aria-hidden", "true");
     document.body.classList.remove("modal-open");
+
+    window.setTimeout(() => {
+      showContactForm();
+    }, 320);
 
     if (lastFocusedElement) {
       lastFocusedElement.focus();
@@ -397,34 +410,164 @@ function initContactModal() {
     input.addEventListener("change", validateServices);
   });
 
+  const showContactSuccess = () => {
+    formView.hidden = true;
+
+    successView.hidden = false;
+    successView.classList.remove("is-visible");
+
+    requestAnimationFrame(() => {
+      successView.classList.add("is-visible");
+    });
+
+    successView.setAttribute("tabindex", "-1");
+    successView.focus();
+  };
+
+  const showContactForm = () => {
+    successView.classList.remove("is-visible");
+    successView.hidden = true;
+
+    formView.hidden = false;
+
+    window.setTimeout(() => {
+      nameInput.focus();
+    }, 80);
+  };
   // ==============================
   // ENVÍO TEMPORAL
   // ==============================
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
+  form.addEventListener("submit", async (event) => {
+  event.preventDefault();
 
-    const isFormValid = validateForm();
+  const isFormValid = validateForm();
 
-    if (!isFormValid) {
-      const firstInvalidElement = form.querySelector(
-        ".is-invalid input, .is-invalid textarea, .is-invalid input[type='checkbox']"
-      );
+  if (!isFormValid) {
+    const firstInvalidElement = form.querySelector(
+      ".is-invalid input, .is-invalid textarea, .is-invalid input[type='checkbox']"
+    );
 
-      firstInvalidElement?.focus();
-      return;
+    firstInvalidElement?.focus();
+    return;
+  }
+
+  const submitText = submitButton.querySelector(
+    ".contact-form-submit-text"
+  );
+
+  const submitIcon = submitButton.querySelector("svg");
+
+  submitButton.disabled = true;
+  submitButton.classList.add("is-loading");
+
+  if (submitText) {
+    submitText.textContent = "Enviando...";
+  }
+
+  if (submitIcon) {
+    submitIcon.hidden = true;
+  }
+
+  try {
+  const isLocalDevelopment =
+    window.location.hostname === "127.0.0.1" ||
+    window.location.hostname === "localhost";
+
+  // Simulación local para evitar el error 405 de Live Server
+  if (isLocalDevelopment) {
+    await new Promise((resolve) => setTimeout(resolve, 900));
+
+    form.reset();
+
+    serviceFieldset.classList.remove("is-valid", "is-invalid");
+
+    form
+      .querySelectorAll(".contact-form-field")
+      .forEach((field) => {
+        field.classList.remove("is-valid", "is-invalid");
+      });
+
+    form
+      .querySelectorAll('[aria-invalid="true"], [aria-invalid="false"]')
+      .forEach((field) => {
+        field.removeAttribute("aria-invalid");
+      });
+
+    nameError.hidden = true;
+    emailError.hidden = true;
+    serviceError.hidden = true;
+    messageError.hidden = true;
+
+    console.log(
+      "Simulación local: formulario enviado correctamente."
+    );
+
+    showContactSuccess();
+
+    return;
+  }
+
+  // Envío real cuando el sitio esté publicado en Netlify
+  const formData = new FormData(form);
+
+  const response = await fetch("/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: new URLSearchParams(formData).toString(),
+  });
+
+  if (!response.ok) {
+    throw new Error(
+      `No se pudo enviar el formulario. Estado: ${response.status}`
+    );
+  }
+
+  form.reset();
+
+  serviceFieldset.classList.remove("is-valid", "is-invalid");
+
+  form
+    .querySelectorAll(".contact-form-field")
+    .forEach((field) => {
+      field.classList.remove("is-valid", "is-invalid");
+    });
+
+  form
+    .querySelectorAll('[aria-invalid="true"], [aria-invalid="false"]')
+    .forEach((field) => {
+      field.removeAttribute("aria-invalid");
+    });
+
+  nameError.hidden = true;
+  emailError.hidden = true;
+  serviceError.hidden = true;
+  messageError.hidden = true;
+
+  console.log("Formulario enviado correctamente.");
+
+    showContactSuccess();
+
+  } catch (error) {
+    console.error("Error al enviar el formulario:", error);
+
+    alert(
+      "No pudimos enviar tu mensaje. Inténtalo nuevamente o contáctanos por correo o WhatsApp."
+    );
+  } finally {
+    submitButton.disabled = false;
+    submitButton.classList.remove("is-loading");
+
+    if (submitText) {
+      submitText.textContent = "Enviar mensaje";
     }
 
-    /*
-      Todavía no enviamos a Netlify.
-      En el siguiente paso agregaremos:
-      - estado Enviando...
-      - solicitud a Netlify
-      - pantalla de éxito
-      - estado de error
-    */
-
-    console.log("Formulario válido y listo para enviarse.");
-  });
+    if (submitIcon) {
+      submitIcon.hidden = false;
+    }
+  }
+});
 
   // ==============================
   // EVENTOS DEL MODAL
@@ -435,6 +578,23 @@ function initContactModal() {
 
   closeButton.addEventListener("click", closeModal);
   overlay.addEventListener("click", closeModal);
+
+  successButton.addEventListener("click", () => {
+    closeModal();
+
+    window.setTimeout(() => {
+      showContactForm();
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }, 320);
+});
+
+newMessageButton.addEventListener("click", () => {
+  showContactForm();
+});
 
   document.addEventListener("keydown", (event) => {
     if (

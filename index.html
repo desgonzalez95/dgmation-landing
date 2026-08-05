@@ -882,159 +882,229 @@
 
         <!-- PANEL DERECHO -->
         <div class="contact-modal-form-panel">
-          <form
-            class="contact-form"
-            id="contactForm"
-            name="contacto-dgmation"
-            method="POST"
-            data-netlify="true"
-            data-netlify-honeypot="bot-field"
-            novalidate
-          >
-            <input type="hidden" name="form-name" value="contacto-dgmation" />
+          <div class="contact-modal-form-view" id="contactFormView">
+            <form
+              class="contact-form"
+              id="contactForm"
+              name="contacto-dgmation"
+              method="POST"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+              novalidate
+            >
+              <input type="hidden" name="form-name" value="contacto-dgmation" />
 
-            <p class="contact-form-honeypot" aria-hidden="true">
-              <label>
-                No llenar:
-                <input name="bot-field" tabindex="-1" autocomplete="off" />
-              </label>
+              <p class="contact-form-honeypot" aria-hidden="true">
+                <label>
+                  No llenar:
+                  <input name="bot-field" tabindex="-1" autocomplete="off" />
+                </label>
+              </p>
+
+              <div class="contact-form-grid">
+                <div class="contact-form-field">
+                  <label for="contactName">
+                    Nombre completo
+                    <span aria-hidden="true">*</span>
+                  </label>
+
+                  <input
+                    id="contactName"
+                    name="nombre"
+                    type="text"
+                    autocomplete="name"
+                    placeholder="Tu nombre"
+                    aria-describedby="nameError"
+                    required
+                  />
+
+                  <p
+                    class="contact-form-error"
+                    id="nameError"
+                    aria-live="polite"
+                    hidden
+                  >
+                    Escribe tu nombre completo.
+                  </p>
+                </div>
+
+                <div class="contact-form-field">
+                  <label for="contactEmail">
+                    Correo electrónico
+                    <span aria-hidden="true">*</span>
+                  </label>
+
+                  <input
+                    id="contactEmail"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    placeholder="nombre@correo.com"
+                    aria-describedby="emailError"
+                    required
+                  />
+
+                  <p
+                    class="contact-form-error"
+                    id="emailError"
+                    aria-live="polite"
+                    hidden
+                  >
+                    Escribe un correo electrónico válido.
+                  </p>
+                </div>
+              </div>
+
+              <fieldset class="contact-service-fieldset">
+                <legend>
+                  ¿Qué servicio necesitas?
+                  <span aria-hidden="true">*</span>
+                </legend>
+
+                <div class="contact-service-options">
+                  <label class="contact-service-chip">
+                    <input
+                      type="checkbox"
+                      name="servicios"
+                      value="UX/UI Design"
+                    />
+                    <span>Diseño UX/UI</span>
+                  </label>
+
+                  <label class="contact-service-chip">
+                    <input
+                      type="checkbox"
+                      name="servicios"
+                      value="Branding"
+                    />
+                    <span>Branding</span>
+                  </label>
+
+                  <label class="contact-service-chip">
+                    <input
+                      type="checkbox"
+                      name="servicios"
+                      value="Motion Design"
+                    />
+                    <span>Animación Digital</span>
+                  </label>
+
+                  <label class="contact-service-chip">
+                    <input
+                      type="checkbox"
+                      name="servicios"
+                      value="Visualización 3D"
+                    />
+                    <span>Visualización 3D</span>
+                  </label>
+                </div>
+
+                <p
+                  class="contact-form-error"
+                  id="serviceError"
+                  aria-live="polite"
+                  hidden
+                >
+                  Selecciona al menos un servicio.
+                </p>
+              </fieldset>
+
+              <div class="contact-form-field">
+                <label for="contactMessage">
+                  Cuéntanos sobre tu proyecto
+                  <span aria-hidden="true">*</span>
+                </label>
+
+                <textarea
+                  id="contactMessage"
+                  name="mensaje"
+                  rows="7"
+                  placeholder="Objetivo del proyecto, alcance, tiempos estimados y cualquier detalle que consideres importante."
+                  aria-describedby="messageError"
+                  required
+                ></textarea>
+
+                <p
+                  class="contact-form-error"
+                  id="messageError"
+                  aria-live="polite"
+                  hidden
+                >
+                  Cuéntanos brevemente sobre tu proyecto.
+                </p>
+              </div>
+
+              <button class="contact-form-submit" id="contactSubmit" type="submit">
+                <span class="contact-form-submit-text">Enviar mensaje</span>
+
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 18 18"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M3.75 9H14.25M10.5 5.25L14.25 9L10.5 12.75"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+
+              <p class="contact-form-note">
+                Te responderemos en un plazo de <strong>24 horas hábiles</strong>.
+              </p>
+            </form>
+          </div>
+          
+          <!-- VISTA DE ÉXITO -->
+          <div
+            class="contact-success-view"
+            id="contactSuccessView"
+            role="status"
+            aria-live="polite"
+            hidden
+          >
+            <div class="contact-success-icon" aria-hidden="true">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="38"
+                height="38"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  d="M7 12.5L10.2 15.5L17.5 8.5"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+
+            <p class="contact-success-eyebrow">Mensaje recibido</p>
+
+            <h2 class="contact-success-title">
+              ¡Mensaje enviado con éxito!
+            </h2>
+
+            <p class="contact-success-description">
+              Tu solicitud llegó correctamente a DGMATION STUDIOS. Revisaremos los
+              detalles de tu proyecto y nos pondremos en contacto contigo en un plazo
+              de <strong>24 horas hábiles</strong>.
             </p>
 
-            <div class="contact-form-grid">
-              <div class="contact-form-field">
-                <label for="contactName">
-                  Nombre completo
-                  <span aria-hidden="true">*</span>
-                </label>
-
-                <input
-                  id="contactName"
-                  name="nombre"
-                  type="text"
-                  autocomplete="name"
-                  placeholder="Tu nombre"
-                  aria-describedby="nameError"
-                  required
-                />
-
-                <p
-                  class="contact-form-error"
-                  id="nameError"
-                  aria-live="polite"
-                  hidden
-                >
-                  Escribe tu nombre completo.
-                </p>
-              </div>
-
-              <div class="contact-form-field">
-                <label for="contactEmail">
-                  Correo electrónico
-                  <span aria-hidden="true">*</span>
-                </label>
-
-                <input
-                  id="contactEmail"
-                  name="email"
-                  type="email"
-                  autocomplete="email"
-                  placeholder="nombre@correo.com"
-                  aria-describedby="emailError"
-                  required
-                />
-
-                <p
-                  class="contact-form-error"
-                  id="emailError"
-                  aria-live="polite"
-                  hidden
-                >
-                  Escribe un correo electrónico válido.
-                </p>
-              </div>
-            </div>
-
-            <fieldset class="contact-service-fieldset">
-              <legend>
-                ¿Qué servicio necesitas?
-                <span aria-hidden="true">*</span>
-              </legend>
-
-              <div class="contact-service-options">
-                <label class="contact-service-chip">
-                  <input
-                    type="checkbox"
-                    name="servicios"
-                    value="UX/UI Design"
-                  />
-                  <span>Diseño UX/UI</span>
-                </label>
-
-                <label class="contact-service-chip">
-                  <input
-                    type="checkbox"
-                    name="servicios"
-                    value="Branding"
-                  />
-                  <span>Branding</span>
-                </label>
-
-                <label class="contact-service-chip">
-                  <input
-                    type="checkbox"
-                    name="servicios"
-                    value="Motion Design"
-                  />
-                  <span>Animación Digital</span>
-                </label>
-
-                <label class="contact-service-chip">
-                  <input
-                    type="checkbox"
-                    name="servicios"
-                    value="Visualización 3D"
-                  />
-                  <span>Visualización 3D</span>
-                </label>
-              </div>
-
-              <p
-                class="contact-form-error"
-                id="serviceError"
-                aria-live="polite"
-                hidden
-              >
-                Selecciona al menos un servicio.
-              </p>
-            </fieldset>
-
-            <div class="contact-form-field">
-              <label for="contactMessage">
-                Cuéntanos sobre tu proyecto
-                <span aria-hidden="true">*</span>
-              </label>
-
-              <textarea
-                id="contactMessage"
-                name="mensaje"
-                rows="7"
-                placeholder="Objetivo del proyecto, alcance, tiempos estimados y cualquier detalle que consideres importante."
-                aria-describedby="messageError"
-                required
-              ></textarea>
-
-              <p
-                class="contact-form-error"
-                id="messageError"
-                aria-live="polite"
-                hidden
-              >
-                Cuéntanos brevemente sobre tu proyecto.
-              </p>
-            </div>
-
-            <button class="contact-form-submit" id="contactSubmit" type="submit">
-              <span class="contact-form-submit-text">Enviar mensaje</span>
+            <button
+              class="contact-success-button"
+              id="contactSuccessButton"
+              type="button"
+            >
+              <span>Volver al inicio</span>
 
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -1054,10 +1124,14 @@
               </svg>
             </button>
 
-            <p class="contact-form-note">
-              Te responderemos en un plazo de <strong>24 horas hábiles</strong>.
-            </p>
-          </form>
+            <button
+              class="contact-success-secondary"
+              id="contactNewMessage"
+              type="button"
+            >
+              Enviar otro mensaje
+            </button>
+          </div>
         </div>
       </div>
     </div>
