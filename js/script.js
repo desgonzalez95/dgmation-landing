@@ -153,10 +153,51 @@ function initContactModal() {
   const closeButton = document.getElementById("closeContactModal");
   const overlay = document.getElementById("contactOverlay");
 
-  if (!openButtons.length || !modal || !closeButton || !overlay) return;
+  const form = document.getElementById("contactForm");
+  const nameInput = document.getElementById("contactName");
+  const emailInput = document.getElementById("contactEmail");
+  const messageInput = document.getElementById("contactMessage");
+
+  const serviceFieldset = form?.querySelector(
+    ".contact-service-fieldset"
+  );
+
+  const serviceInputs = form?.querySelectorAll(
+    'input[name="servicios"]'
+  );
+
+  const nameError = document.getElementById("nameError");
+  const emailError = document.getElementById("emailError");
+  const serviceError = document.getElementById("serviceError");
+  const messageError = document.getElementById("messageError");
+
+  const submitButton = document.getElementById("contactSubmit");
+
+  if (
+    !openButtons.length ||
+    !modal ||
+    !closeButton ||
+    !overlay ||
+    !form ||
+    !nameInput ||
+    !emailInput ||
+    !messageInput ||
+    !serviceFieldset ||
+    !serviceInputs?.length ||
+    !nameError ||
+    !emailError ||
+    !serviceError ||
+    !messageError ||
+    !submitButton
+  ) {
+    return;
+  }
 
   let lastFocusedElement = null;
 
+  // ==============================
+  // ABRIR Y CERRAR MODAL
+  // ==============================
   const openModal = (event) => {
     event.preventDefault();
 
@@ -181,6 +222,213 @@ function initContactModal() {
     }
   };
 
+  // ==============================
+  // UTILIDADES DE VALIDACIÓN
+  // ==============================
+  const setFieldError = (input, errorElement, message) => {
+    const field = input.closest(".contact-form-field");
+
+    field?.classList.add("is-invalid");
+    field?.classList.remove("is-valid");
+
+    input.setAttribute("aria-invalid", "true");
+
+    errorElement.textContent = message;
+    errorElement.hidden = false;
+  };
+
+  const setFieldValid = (input, errorElement) => {
+    const field = input.closest(".contact-form-field");
+
+    field?.classList.remove("is-invalid");
+    field?.classList.add("is-valid");
+
+    input.setAttribute("aria-invalid", "false");
+    errorElement.hidden = true;
+  };
+
+  const clearFieldState = (input, errorElement) => {
+    const field = input.closest(".contact-form-field");
+
+    field?.classList.remove("is-invalid", "is-valid");
+
+    input.removeAttribute("aria-invalid");
+    errorElement.hidden = true;
+  };
+
+  const isValidEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  // ==============================
+  // VALIDACIÓN INDIVIDUAL
+  // ==============================
+  const validateName = () => {
+    const value = nameInput.value.trim();
+
+    if (value.length < 2) {
+      setFieldError(
+        nameInput,
+        nameError,
+        "Escribe tu nombre completo."
+      );
+
+      return false;
+    }
+
+    setFieldValid(nameInput, nameError);
+    return true;
+  };
+
+  const validateEmail = () => {
+    const value = emailInput.value.trim();
+
+    if (!value) {
+      setFieldError(
+        emailInput,
+        emailError,
+        "Escribe tu correo electrónico."
+      );
+
+      return false;
+    }
+
+    if (!isValidEmail(value)) {
+      setFieldError(
+        emailInput,
+        emailError,
+        "Escribe un correo electrónico válido."
+      );
+
+      return false;
+    }
+
+    setFieldValid(emailInput, emailError);
+    return true;
+  };
+
+  const validateServices = () => {
+    const hasSelectedService = [...serviceInputs].some(
+      (input) => input.checked
+    );
+
+    if (!hasSelectedService) {
+      serviceFieldset.classList.add("is-invalid");
+      serviceFieldset.classList.remove("is-valid");
+
+      serviceError.hidden = false;
+
+      return false;
+    }
+
+    serviceFieldset.classList.remove("is-invalid");
+    serviceFieldset.classList.add("is-valid");
+
+    serviceError.hidden = true;
+
+    return true;
+  };
+
+  const validateMessage = () => {
+    const value = messageInput.value.trim();
+
+    if (value.length < 10) {
+      setFieldError(
+        messageInput,
+        messageError,
+        "Cuéntanos un poco más sobre tu proyecto."
+      );
+
+      return false;
+    }
+
+    setFieldValid(messageInput, messageError);
+    return true;
+  };
+
+  const validateForm = () => {
+    const isNameValid = validateName();
+    const isEmailValid = validateEmail();
+    const areServicesValid = validateServices();
+    const isMessageValid = validateMessage();
+
+    return (
+      isNameValid &&
+      isEmailValid &&
+      areServicesValid &&
+      isMessageValid
+    );
+  };
+
+  // ==============================
+  // VALIDACIÓN EN TIEMPO REAL
+  // ==============================
+  nameInput.addEventListener("blur", validateName);
+  emailInput.addEventListener("blur", validateEmail);
+  messageInput.addEventListener("blur", validateMessage);
+
+  nameInput.addEventListener("input", () => {
+    if (nameInput.value.trim().length >= 2) {
+      setFieldValid(nameInput, nameError);
+    } else {
+      clearFieldState(nameInput, nameError);
+    }
+  });
+
+  emailInput.addEventListener("input", () => {
+    const value = emailInput.value.trim();
+
+    if (value && isValidEmail(value)) {
+      setFieldValid(emailInput, emailError);
+    } else {
+      clearFieldState(emailInput, emailError);
+    }
+  });
+
+  messageInput.addEventListener("input", () => {
+    if (messageInput.value.trim().length >= 10) {
+      setFieldValid(messageInput, messageError);
+    } else {
+      clearFieldState(messageInput, messageError);
+    }
+  });
+
+  serviceInputs.forEach((input) => {
+    input.addEventListener("change", validateServices);
+  });
+
+  // ==============================
+  // ENVÍO TEMPORAL
+  // ==============================
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const isFormValid = validateForm();
+
+    if (!isFormValid) {
+      const firstInvalidElement = form.querySelector(
+        ".is-invalid input, .is-invalid textarea, .is-invalid input[type='checkbox']"
+      );
+
+      firstInvalidElement?.focus();
+      return;
+    }
+
+    /*
+      Todavía no enviamos a Netlify.
+      En el siguiente paso agregaremos:
+      - estado Enviando...
+      - solicitud a Netlify
+      - pantalla de éxito
+      - estado de error
+    */
+
+    console.log("Formulario válido y listo para enviarse.");
+  });
+
+  // ==============================
+  // EVENTOS DEL MODAL
+  // ==============================
   openButtons.forEach((button) => {
     button.addEventListener("click", openModal);
   });
@@ -189,7 +437,10 @@ function initContactModal() {
   overlay.addEventListener("click", closeModal);
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && modal.classList.contains("is-open")) {
+    if (
+      event.key === "Escape" &&
+      modal.classList.contains("is-open")
+    ) {
       closeModal();
     }
   });
