@@ -607,6 +607,41 @@ newMessageButton.addEventListener("click", () => {
 }
 
 // ==============================
+// PORTFOLIO FILTERS
+// ==============================
+function initPortfolioFilters() {
+  const filters = document.querySelectorAll(".portfolio-filter");
+  const cards = document.querySelectorAll(".portfolio-editorial-card");
+
+  if (!filters.length || !cards.length) return;
+
+  filters.forEach((filterButton) => {
+    filterButton.addEventListener("click", () => {
+      const selectedFilter = filterButton.dataset.filter;
+
+      // Actualizar filtro activo
+      filters.forEach((button) => {
+        const isActive = button === filterButton;
+
+        button.classList.toggle("is-active", isActive);
+        button.setAttribute("aria-pressed", String(isActive));
+      });
+
+      // Filtrar proyectos
+      cards.forEach((card) => {
+        const cardCategory = card.dataset.category;
+
+        const shouldShow =
+          selectedFilter === "all" ||
+          cardCategory === selectedFilter;
+
+        card.hidden = !shouldShow;
+      });
+    });
+  });
+}
+
+// ==============================
 // INIT GENERAL
 // ==============================
 document.addEventListener("DOMContentLoaded", () => {
@@ -614,19 +649,36 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeroAnimation();
   initServicesReveal();
   initShowreelModal();
+  initPortfolioFilters();
   initContactModal();
 });
 
 // ==============================
-// SCROLL RESET (IMPORTANTE)
+// SCROLL RESET
 // ==============================
 if ("scrollRestoration" in history) {
   history.scrollRestoration = "manual";
 }
 
 window.addEventListener("load", () => {
-  if (window.location.hash) {
-    history.replaceState(null, "", window.location.pathname);
+  const hash = window.location.hash;
+
+  // Si llegamos con un ancla válida, respetarla
+  if (hash) {
+    const targetSection = document.querySelector(hash);
+
+    if (targetSection) {
+      window.setTimeout(() => {
+        targetSection.scrollIntoView({
+          behavior: "auto",
+          block: "start",
+        });
+      }, 50);
+
+      return;
+    }
   }
+
+  // Si no hay ancla válida, comenzar arriba
   window.scrollTo(0, 0);
 });
