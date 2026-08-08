@@ -56,6 +56,65 @@ function initHeroAnimation() {
 }
 
 // ==============================
+// HOME PORTFOLIO REVEAL
+// ==============================
+function initHomePortfolioReveal() {
+  const section = document.querySelector(".portfolio-home-reveal");
+
+  if (!section) return;
+
+  const heading = section.querySelector(".portfolio-home-heading");
+  const cards = section.querySelectorAll(".portfolio-home-card");
+  const cta = section.querySelector(".portfolio-home-cta");
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        // Título
+        if (heading) {
+          heading.classList.add("is-visible");
+        }
+
+        // Cards
+        cards.forEach((card, index) => {
+          let delay;
+
+          if (index === 0) {
+            // Card principal
+            delay = 180;
+          } else {
+            // Cards secundarias entran juntas
+            delay = 380;
+          }
+
+          window.setTimeout(() => {
+            card.classList.add("is-visible");
+          }, delay);
+        });
+
+        // CTA
+        window.setTimeout(() => {
+          if (cta) {
+            cta.classList.add("is-visible");
+          }
+        }, 820);
+
+        // La animación solo ocurre una vez
+        obs.unobserve(entry.target);
+      });
+    },
+    {
+      threshold: 0.28,
+      rootMargin: "0px 0px -60px 0px",
+    }
+  );
+
+  observer.observe(section);
+}
+
+// ==============================
 // SERVICES REVEAL ON SCROLL
 // ==============================
 function initServicesReveal() {
@@ -84,6 +143,7 @@ function initServicesReveal() {
 
   observer.observe(servicesSection);
 }
+
 
 // ==============================
 // SHOWREEL MODAL
@@ -607,38 +667,126 @@ newMessageButton.addEventListener("click", () => {
 }
 
 // ==============================
-// PORTFOLIO FILTERS
+// PORTFOLIO FILTERS + LOAD MORE
 // ==============================
 function initPortfolioFilters() {
   const filters = document.querySelectorAll(".portfolio-filter");
-  const cards = document.querySelectorAll(".portfolio-editorial-card");
+  const cards = Array.from(
+    document.querySelectorAll(".portfolio-editorial-card")
+  );
+
+  const moreWrapper = document.getElementById("portfolioShowcaseMore");
+  const moreButton = document.getElementById("portfolioMoreBtn");
 
   if (!filters.length || !cards.length) return;
 
+  const INITIAL_VISIBLE_PROJECTS = 10;
+
+  let activeFilter = "all";
+  let isExpanded = false;
+
+  // Devuelve únicamente las cards que pertenecen
+  // al filtro seleccionado actualmente.
+  const getFilteredCards = () => {
+    return cards.filter((card) => {
+      if (activeFilter === "all") {
+        return true;
+      }
+
+      return card.dataset.category === activeFilter;
+    });
+  };
+
+  // Actualiza qué proyectos se muestran.
+  const updateProjects = () => {
+    const filteredCards = getFilteredCards();
+
+    // Primero ocultamos todo.
+    cards.forEach((card) => {
+      card.hidden = true;
+    });
+
+    // Si está expandido, mostramos todos.
+    // Si no, solamente los primeros 10.
+    const visibleCards = isExpanded
+      ? filteredCards
+      : filteredCards.slice(0, INITIAL_VISIBLE_PROJECTS);
+
+    visibleCards.forEach((card) => {
+      card.hidden = false;
+    });
+
+    // ==============================
+    // BOTÓN VER MÁS / VER MENOS
+    // ==============================
+    if (!moreWrapper || !moreButton) return;
+
+    // Si el filtro tiene 10 proyectos o menos,
+    // no necesitamos mostrar el botón.
+    if (filteredCards.length <= INITIAL_VISIBLE_PROJECTS) {
+      moreWrapper.hidden = true;
+      return;
+    }
+
+    moreWrapper.hidden = false;
+
+    moreButton.textContent = isExpanded
+      ? "Ver menos"
+      : "Ver más";
+  };
+
+  // ==============================
+  // FILTROS
+  // ==============================
   filters.forEach((filterButton) => {
     filterButton.addEventListener("click", () => {
-      const selectedFilter = filterButton.dataset.filter;
+      activeFilter = filterButton.dataset.filter;
 
-      // Actualizar filtro activo
+      // Cada vez que cambiamos de filtro,
+      // regresamos al estado compacto.
+      isExpanded = false;
+
       filters.forEach((button) => {
         const isActive = button === filterButton;
 
         button.classList.toggle("is-active", isActive);
-        button.setAttribute("aria-pressed", String(isActive));
+        button.setAttribute(
+          "aria-pressed",
+          String(isActive)
+        );
       });
 
-      // Filtrar proyectos
-      cards.forEach((card) => {
-        const cardCategory = card.dataset.category;
-
-        const shouldShow =
-          selectedFilter === "all" ||
-          cardCategory === selectedFilter;
-
-        card.hidden = !shouldShow;
-      });
+      updateProjects();
     });
   });
+
+  // ==============================
+  // VER MÁS / VER MENOS
+  // ==============================
+  if (moreButton) {
+    moreButton.addEventListener("click", () => {
+      isExpanded = !isExpanded;
+
+      updateProjects();
+
+      // Si volvemos a "Ver menos",
+      // reposicionamos suavemente al usuario
+      // cerca de los filtros/grid.
+      if (!isExpanded) {
+        const portfolioGrid = document.querySelector(
+          ".portfolio-editorial-grid"
+        );
+
+        portfolioGrid?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    });
+  }
+
+  // Estado inicial
+  updateProjects();
 }
 
 // ==============================
@@ -647,6 +795,7 @@ function initPortfolioFilters() {
 document.addEventListener("DOMContentLoaded", () => {
   initMobileMenu();
   initHeroAnimation();
+  initHomePortfolioReveal();
   initServicesReveal();
   initShowreelModal();
   initPortfolioFilters();

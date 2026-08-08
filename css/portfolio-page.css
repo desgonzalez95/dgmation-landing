@@ -331,6 +331,10 @@
   margin-top: 64px;
 }
 
+.portfolio-showcase-more[hidden] {
+  display: none !important;
+}
+
 .portfolio-more-btn {
   min-width: 150px;
   min-height: 50px;
@@ -339,6 +343,7 @@
   background: transparent;
   color: var(--primary);
   font-weight: 600;
+  cursor: pointer;
 }
 
 .portfolio-more-btn:hover {
@@ -352,6 +357,23 @@
 .cta {
   padding: 0 0 80px;
   background: #07030f;
+}
+
+.portfolio-editorial-card:not([hidden]) {
+  animation: portfolio-filter-in 0.42s
+    cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes portfolio-filter-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 /* =========================

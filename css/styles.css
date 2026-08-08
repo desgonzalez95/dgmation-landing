@@ -118,7 +118,7 @@ ul {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 1px;
   min-height: 52px;
   padding: 0 24px;
   border-radius: 16px;
@@ -166,6 +166,7 @@ ul {
   justify-content: center;
   font-size: 1.65rem;
   line-height: 1;
+  transform: translateY(-1px);
 }
 
 .hero-btn-primary svg path {
@@ -312,6 +313,7 @@ ul {
   background: transparent;
   border-color: var(--border-soft);
   color: var(--primary);
+  min-width: 170px;
 }
 
 .btn-outline-light:hover {
@@ -1073,6 +1075,44 @@ ul {
 }
 
 /* =========================
+   HOME PORTFOLIO REVEAL
+========================= */
+
+.portfolio-home-heading,
+.portfolio-home-card,
+.portfolio-home-cta {
+  opacity: 0;
+  transform: translateY(28px);
+
+  will-change: opacity, transform;
+}
+
+.portfolio-home-heading.is-visible,
+.portfolio-home-card.is-visible,
+.portfolio-home-cta.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.portfolio-home-heading {
+  transition:
+    opacity .95s cubic-bezier(.22,1,.36,1),
+    transform .95s cubic-bezier(.22,1,.36,1);
+}
+
+.portfolio-home-card {
+  transition:
+    opacity .9s cubic-bezier(.22,1,.36,1),
+    transform .9s cubic-bezier(.22,1,.36,1);
+}
+
+.portfolio-home-cta {
+  transition:
+    opacity .85s cubic-bezier(.22,1,.36,1),
+    transform .85s cubic-bezier(.22,1,.36,1);
+}
+
+/* =========================
    CTA BANNER
 ========================= */
 .cta-banner {
@@ -1129,7 +1169,7 @@ ul {
 
 .cta-contact {
   min-height: 65px;
-  padding: 0 28px;
+  padding: 0px 24px 0px 28px;
   border-radius: 20px;
   font-size: 0.95rem;
   font-weight: 700;
@@ -1137,6 +1177,14 @@ ul {
   letter-spacing: 0.08em;
   background: #ffffff;
   color: #6922ff;
+}
+
+.cta-contact-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  transform: translateY(-1px);
 }
 
 /* =========================
@@ -1247,6 +1295,12 @@ ul {
   height: 24px;
 }
 
+.footer .footer-social .social-whatsapp svg path {
+  transform: scale(0.84);
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
 .footer .footer-social svg path,
 .footer .footer-social svg rect {
   transition: fill 0.25s ease;
@@ -1257,16 +1311,18 @@ ul {
   fill: #ffffff;
 }
 
-/* Instagram, YouTube, Behance */
+/* Instagram, YouTube, Behance, WhatsApp */
 .footer .footer-social .social-instagram:hover svg rect,
 .footer .footer-social .social-youtube:hover svg rect,
-.footer .footer-social .social-behance:hover svg rect {
+.footer .footer-social .social-behance:hover svg rect,
+.footer .footer-social .social-whatsapp:hover svg rect {
   fill: #ffffff;
 }
 
 .footer .footer-social .social-instagram:hover svg path,
 .footer .footer-social .social-youtube:hover svg path,
-.footer .footer-social .social-behance:hover svg path {
+.footer .footer-social .social-behance:hover svg path,
+.footer .footer-social .social-whatsapp:hover svg path {
   fill: #090513;
 }
 /* =========================
@@ -1819,13 +1875,15 @@ body.modal-open {
 /* Instagram, YouTube y Behance */
 .contact-social-instagram:hover svg rect,
 .contact-social-youtube:hover svg rect,
-.contact-social-behance:hover svg rect {
+.contact-social-behance:hover svg rect,
+.contact-social-whatsapp:hover svg rect {
   fill: #ffffff;
 }
 
 .contact-social-instagram:hover svg path,
 .contact-social-youtube:hover svg path,
-.contact-social-behance:hover svg path {
+.contact-social-behance:hover svg path,
+.contact-social-whatsapp:hover svg path {
   fill: #090513;
 }
 
