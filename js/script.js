@@ -790,6 +790,252 @@ function initPortfolioFilters() {
 }
 
 // ==============================
+// PORTFOLIO PROJECT DATA
+// ==============================
+const portfolioProjects = {
+  velfare: {
+    title: "Velfare",
+    category: "Diseño UX/UI",
+    tagClass: "portfolio-card-tag--purple",
+    description:
+      "Aplicación enfocada en nutrición personalizada con una experiencia intuitiva y visual.",
+    year: "2025",
+
+    media: [
+      {
+        type: "image",
+        src: "assets/images/portfolio/velfare-image.png",
+        alt: "Proyecto Velfare",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/velfare/velfareapp-banner-01.jpg",
+        alt: "Velfare App View 1",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/velfare/velfareapp-banner-02.jpg",
+        alt: "Velfare App View 2",
+      },
+      
+      {
+        type: "image",
+        src: "assets/images/portfolio/velfare/velfareapp-banner-03.jpg",
+        alt: "Velfare App View 3",
+      },
+    ],
+  },
+};
+
+// ==============================
+// PORTFOLIO GALLERY
+// ==============================
+function initPortfolioGallery() {
+  const openButtons = document.querySelectorAll(
+    ".js-open-project-gallery"
+  );
+
+  const modal = document.getElementById("portfolioGalleryModal");
+  const overlay = document.getElementById("portfolioGalleryOverlay");
+  const closeButton = document.getElementById("portfolioGalleryClose");
+
+  const galleryTag = document.getElementById("portfolioGalleryTag");
+  const galleryCounter = document.getElementById(
+    "portfolioGalleryCounter"
+  );
+
+  const galleryImage = document.getElementById(
+    "portfolioGalleryImage"
+  );
+
+  const prevButton = document.getElementById("portfolioGalleryPrev");
+  const nextButton = document.getElementById("portfolioGalleryNext");
+
+  const galleryTitle = document.getElementById(
+    "portfolioGalleryTitle"
+  );
+
+  const galleryDescription = document.getElementById(
+    "portfolioGalleryDescription"
+  );
+
+  const galleryYear = document.getElementById(
+    "portfolioGalleryYear"
+  );
+
+  if (
+    !openButtons.length ||
+    !modal ||
+    !overlay ||
+    !closeButton ||
+    !galleryTag ||
+    !galleryCounter ||
+    !galleryImage ||
+    !prevButton ||
+    !nextButton ||
+    !galleryTitle ||
+    !galleryDescription ||
+    !galleryYear
+  ) {
+    return;
+  }
+
+  let currentProject = null;
+  let currentMediaIndex = 0;
+  let lastFocusedElement = null;
+
+  const updateCounter = () => {
+    if (!currentProject) return;
+
+    const current = String(currentMediaIndex + 1).padStart(2, "0");
+    const total = String(currentProject.media.length).padStart(2, "0");
+
+    galleryCounter.textContent = `${current} / ${total}`;
+  };
+
+  const renderMedia = () => {
+    if (!currentProject) return;
+
+    const mediaItem = currentProject.media[currentMediaIndex];
+
+    if (!mediaItem) return;
+
+    updateCounter();
+
+    prevButton.hidden = currentMediaIndex === 0;
+
+    nextButton.hidden =
+      currentMediaIndex === currentProject.media.length - 1;
+
+    if (mediaItem.type === "image") {
+      galleryImage.classList.add("is-changing");
+
+      window.setTimeout(() => {
+        galleryImage.src = mediaItem.src;
+        galleryImage.alt =
+          mediaItem.alt || currentProject.title;
+
+        galleryImage.onload = () => {
+          requestAnimationFrame(() => {
+            galleryImage.classList.remove("is-changing");
+          });
+        };
+      }, 280);
+    }
+  };
+
+  const renderProject = (project) => {
+    currentProject = project;
+    currentMediaIndex = 0;
+
+    galleryTitle.textContent = project.title;
+    galleryDescription.textContent = project.description;
+    galleryYear.textContent = project.year;
+    galleryTag.textContent = project.category;
+
+    galleryTag.className = "portfolio-card-tag";
+
+    if (project.tagClass) {
+      galleryTag.classList.add(project.tagClass);
+    }
+
+    renderMedia();
+  };
+
+  const openGallery = (projectId, triggerElement = null) => {
+    const project = portfolioProjects[projectId];
+
+    if (!project) return;
+
+    if (triggerElement) {
+      lastFocusedElement = triggerElement;
+    }
+
+    renderProject(project);
+
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+
+    document.body.classList.add("modal-open");
+
+    window.setTimeout(() => {
+      closeButton.focus();
+    }, 100);
+  };
+
+  const closeGallery = () => {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+
+    document.body.classList.remove("modal-open");
+
+    if (lastFocusedElement) {
+      lastFocusedElement.focus();
+    }
+  };
+
+  const showPreviousMedia = () => {
+    if (!currentProject || currentMediaIndex <= 0) return;
+
+    currentMediaIndex--;
+
+    renderMedia();
+  };
+
+  const showNextMedia = () => {
+    if (
+      !currentProject ||
+      currentMediaIndex >= currentProject.media.length - 1
+    ) {
+      return;
+    }
+
+    currentMediaIndex++;
+
+    renderMedia();
+  };
+
+  openButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      const card = button.closest("[data-project-id]");
+
+      if (!card) return;
+
+      const projectId = card.dataset.projectId;
+
+      openGallery(projectId, button);
+    });
+  });
+
+  closeButton.addEventListener("click", closeGallery);
+  overlay.addEventListener("click", closeGallery);
+
+  prevButton.addEventListener("click", showPreviousMedia);
+  nextButton.addEventListener("click", showNextMedia);
+
+  document.addEventListener("keydown", (event) => {
+    if (!modal.classList.contains("is-open")) return;
+
+    if (event.key === "Escape") {
+      closeGallery();
+    }
+
+    if (event.key === "ArrowLeft") {
+      showPreviousMedia();
+    }
+
+    if (event.key === "ArrowRight") {
+      showNextMedia();
+    }
+  });
+}
+
+
+// ==============================
 // INIT GENERAL
 // ==============================
 document.addEventListener("DOMContentLoaded", () => {
@@ -799,6 +1045,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initServicesReveal();
   initShowreelModal();
   initPortfolioFilters();
+  initPortfolioGallery();
   initContactModal();
 });
 

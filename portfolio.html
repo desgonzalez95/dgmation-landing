@@ -134,21 +134,29 @@
                 <!-- GRID -->
                 <div class="portfolio-editorial-grid">
                     <!-- 1 -->
-                    <article class="portfolio-editorial-card portfolio-editorial-card--xl" data-category="uxui">
-                    <a href="#" class="portfolio-editorial-link">
+                    <article
+                      class="portfolio-editorial-card portfolio-editorial-card--xl"
+                      data-category="uxui"
+                      data-project-id="velfare"
+                    >
+                      <a
+                        href="#portfolioGalleryModal"
+                        class="portfolio-editorial-link js-open-project-gallery"
+                        aria-label="Ver proyecto Velfare"
+                      >
                         <img
-                        src="assets/images/portfolio/velfare-image.png"
-                        alt="Proyecto Neo-Cosmos"
+                          src="assets/images/portfolio/velfare-image.png"
+                          alt="Proyecto Velfare"
                         />
+
                         <div class="portfolio-editorial-overlay">
-                        <p class="portfolio-card-tag portfolio-card-tag--purple">Diseño UX/UI</p>
-                        <h3>Velfare</h3>
-                        <!--<p class="portfolio-card-description">
-                            A cinematic exploration of spatial computing and depth-driven
-                            dashboard design for modern architectural studios.
-                        </p>-->
+                          <p class="portfolio-card-tag portfolio-card-tag--purple">
+                            Diseño UX/UI
+                          </p>
+
+                          <h3>Velfare</h3>
                         </div>
-                    </a>
+                      </a>
                     </article>
 
                     <!-- 2 -->
@@ -1030,6 +1038,145 @@
             >
               Enviar otro mensaje
             </button>
+          </div>
+        </div>
+      </div>
+    </div>
+          <!-- ==========================
+              PORTFOLIO GALLERY MODAL
+          ========================== -->
+          <div
+            class="portfolio-gallery-modal"
+            id="portfolioGalleryModal"
+            aria-hidden="true"
+          >
+            <div
+              class="portfolio-gallery-overlay"
+              id="portfolioGalleryOverlay"
+            ></div>
+
+            <div
+              class="portfolio-gallery-dialog"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="portfolioGalleryTitle"
+            >
+              <!-- Cerrar -->
+              <button
+                class="portfolio-gallery-close"
+                id="portfolioGalleryClose"
+                type="button"
+                aria-label="Cerrar proyecto"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <path
+                    d="M6 6L18 18M18 6L6 18"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </button>
+
+              <!-- Cabecera -->
+              <div class="portfolio-gallery-top">
+                <p
+                  class="portfolio-card-tag portfolio-card-tag--purple"
+                  id="portfolioGalleryTag"
+                >
+                  Diseño UX/UI
+                </p>
+
+                <p
+                  class="portfolio-gallery-counter"
+                  id="portfolioGalleryCounter"
+                >
+                  01 / 03
+                </p>
+              </div>
+
+              <!-- Media principal -->
+              <div class="portfolio-gallery-media">
+                <img
+                  id="portfolioGalleryImage"
+                  src="assets/images/portfolio/velfare-image.png"
+                  alt="Proyecto Velfare"
+                />
+
+                <!-- Anterior -->
+                <button
+                  class="portfolio-gallery-arrow portfolio-gallery-arrow--prev"
+                  id="portfolioGalleryPrev"
+                  type="button"
+                  aria-label="Imagen anterior"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <path
+                      d="M14.5 6.5L9 12L14.5 17.5"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+
+                <!-- Siguiente -->
+                <button
+                  class="portfolio-gallery-arrow portfolio-gallery-arrow--next"
+                  id="portfolioGalleryNext"
+                  type="button"
+                  aria-label="Siguiente imagen"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <path
+                      d="M9.5 6.5L15 12L9.5 17.5"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Información -->
+              <div class="portfolio-gallery-info">
+                <div class="portfolio-gallery-copy">
+                  <h2 id="portfolioGalleryTitle">
+                    Velfare
+                  </h2>
+
+                  <p id="portfolioGalleryDescription">
+                    Aplicación enfocada en nutrición personalizada con una experiencia
+                    intuitiva y visual.
+                  </p>
+                </div>
+
+                <div class="portfolio-gallery-meta">
+                  <span>Proyecto</span>
+                  <strong id="portfolioGalleryYear">2025</strong>
+                </div>
+              </div>
+            </div>
           </div>
 
     <script src="js/script.js"></script>

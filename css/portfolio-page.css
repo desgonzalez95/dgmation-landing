@@ -377,6 +377,335 @@
 }
 
 /* =========================
+   PORTFOLIO GALLERY MODAL
+========================= */
+
+.portfolio-gallery-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 340;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0px;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.portfolio-gallery-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+
+/* Fondo / página detrás */
+.portfolio-gallery-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(4, 3, 10, 0.88);
+  backdrop-filter: blur(14px);
+}
+
+
+/* Modal principal */
+.portfolio-gallery-dialog {
+  position: relative;
+  z-index: 1;
+
+  /* Galería prácticamente fullscreen */
+  width: 100vw;
+  height: 100dvh;
+
+  padding: 28px 36px;
+
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 20px;
+
+  overflow: hidden;
+
+  /* Eliminamos apariencia de card */
+  border: 0;
+  border-radius: 0;
+
+  /* Conservamos el fondo morado oscuro de DGMATION */
+  background:
+    radial-gradient(
+      circle at 5% 90%,
+      rgba(124, 58, 237, 0.15),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 95% 5%,
+      rgba(124, 58, 237, 0.08),
+      transparent 30%
+    ),
+    linear-gradient(
+      145deg,
+      #090513 0%,
+      #0f071d 100%
+    );
+
+  color: var(--text-light);
+
+  /* Ya no necesitamos sombra porque no hay card flotante */
+  box-shadow: none;
+
+  /* Conservamos la animación de entrada */
+  transform: translateY(22px) scale(0.985);
+
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.portfolio-gallery-modal.is-open .portfolio-gallery-dialog {
+  transform: translateY(0) scale(1);
+}
+
+.portfolio-gallery-top {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  right: 30px;
+  z-index: 10;
+
+  min-height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-right: 64px;
+
+  pointer-events: none;
+}
+
+.portfolio-gallery-counter {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  margin: 0;
+
+  transform: translate(-50%, -50%);
+
+  color: rgba(255, 255, 255, 0.72);
+
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
+
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.portfolio-gallery-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 20;
+
+  width: 44px;
+  height: 44px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.07);
+  color: #a4adbd;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(12px);
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.portfolio-gallery-close svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.portfolio-gallery-close:hover {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: transparent;
+
+  transform: rotate(90deg) scale(1.04);
+
+  box-shadow:
+    0 12px 32px rgba(124, 58, 237, 0.3),
+    0 0 18px rgba(124, 58, 237, 0.16);
+}
+
+.portfolio-gallery-media {
+  position: relative;
+
+  min-height: 0;
+  overflow: hidden;
+
+  border-radius: 24px;
+
+  background: #07030f;
+}
+
+.portfolio-gallery-media img,
+.portfolio-gallery-media video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.portfolio-gallery-media img {
+  transition:
+    opacity 0.42s ease,
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.42s ease;
+
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+}
+
+.portfolio-gallery-media img.is-changing {
+  opacity: 0;
+  transform: scale(0.985);
+  filter: blur(4px);
+}
+
+.portfolio-gallery-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+
+  width: 54px;
+  height: 54px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 50%;
+
+  background: rgba(7, 3, 15, 0.56);
+  color: #ffffff;
+
+  backdrop-filter: blur(12px);
+
+  cursor: pointer;
+
+  transform: translateY(-50%);
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* Ocultar flechas cuando JS aplica hidden */
+.portfolio-gallery-arrow[hidden] {
+  display: none !important;
+}
+
+.portfolio-gallery-arrow--prev {
+  left: 24px;
+}
+
+.portfolio-gallery-arrow--next {
+  right: 24px;
+}
+
+.portfolio-gallery-arrow:hover {
+  background: rgba(124, 58, 237, 0.86);
+  border-color: rgba(255, 255, 255, 0.2);
+
+  box-shadow:
+    0 10px 30px rgba(124, 58, 237, 0.3),
+    0 0 18px rgba(124, 58, 237, 0.15);
+}
+
+.portfolio-gallery-arrow--prev:hover {
+  transform: translateY(-50%) translateX(-2px);
+}
+
+.portfolio-gallery-arrow--next:hover {
+  transform: translateY(-50%) translateX(2px);
+}
+
+.portfolio-gallery-info {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 40px;
+
+  padding: 0 2px 2px;
+}
+
+.portfolio-gallery-copy {
+  max-width: 760px;
+}
+
+.portfolio-gallery-copy h2 {
+  margin: 0 0 8px;
+
+  font-size: clamp(1.8rem, 2.5vw, 2.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+
+  color: #ffffff;
+}
+
+.portfolio-gallery-copy p {
+  margin: 0;
+
+  max-width: 720px;
+
+  color: var(--text-muted-light);
+
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.portfolio-gallery-meta {
+  display: grid;
+  justify-items: end;
+  gap: 4px;
+
+  color: var(--text-muted-light);
+
+  font-size: 0.72rem;
+}
+
+.portfolio-gallery-meta strong {
+  color: #ffffff;
+
+  font-size: 0.86rem;
+  letter-spacing: 0.05em;
+}
+
+/* =========================
    RESPONSIVE
 ========================= */
 
@@ -510,6 +839,56 @@
   .portfolio-showcase-more {
     margin-top: 30px;
   }
+
+  /* =========================
+   PORTFOLIO GALLERY - TABLET
+  ========================= */
+
+  .portfolio-gallery-modal {
+    padding: 20px;
+  }
+
+  .portfolio-gallery-dialog {
+    width: 100%;
+    height: min(94dvh, 900px);
+    padding: 20px;
+    border-radius: 24px;
+  }
+
+  .portfolio-gallery-top {
+    top: 24px;
+    left: 24px;
+    right: 24px;
+    padding-right: 58px;
+  }
+
+  .portfolio-gallery-close {
+    top: 18px;
+    right: 18px;
+    width: 42px;
+    height: 42px;
+  }
+
+  .portfolio-gallery-arrow {
+    width: 46px;
+    height: 46px;
+  }
+
+  .portfolio-gallery-arrow--prev {
+    left: 16px;
+  }
+
+  .portfolio-gallery-arrow--next {
+    right: 16px;
+  }
+
+  .portfolio-gallery-info {
+    gap: 24px;
+  }
+
+  .portfolio-gallery-copy h2 {
+    font-size: 2rem;
+  }
 }
 
 @media (max-width: 560px) {
@@ -592,4 +971,99 @@
   .portfolio-more-btn {
     width: min(100%, 160px);
   }
+
+  /* =========================
+   PORTFOLIO GALLERY - MOBILE
+========================= */
+
+.portfolio-gallery-modal {
+  padding: 0;
+}
+
+.portfolio-gallery-dialog {
+  width: 100%;
+  height: 100dvh;
+
+  padding: 16px;
+
+  border: 0;
+  border-radius: 0;
+
+  gap: 16px;
+}
+
+.portfolio-gallery-top {
+  top: 20px;
+  left: 20px;
+  right: 20px;
+
+  min-height: 40px;
+  padding-right: 52px;
+}
+
+.portfolio-gallery-counter {
+  font-size: 0.7rem;
+}
+
+.portfolio-gallery-close {
+  top: 14px;
+  right: 14px;
+
+  width: 40px;
+  height: 40px;
+}
+
+.portfolio-gallery-close svg {
+  width: 21px;
+  height: 21px;
+}
+
+.portfolio-gallery-media {
+  border-radius: 20px;
+}
+
+.portfolio-gallery-arrow {
+  width: 40px;
+  height: 40px;
+}
+
+.portfolio-gallery-arrow svg {
+  width: 19px;
+  height: 19px;
+}
+
+.portfolio-gallery-arrow--prev {
+  left: 10px;
+}
+
+.portfolio-gallery-arrow--next {
+  right: 10px;
+}
+
+.portfolio-gallery-info {
+  grid-template-columns: 1fr;
+  align-items: start;
+  gap: 14px;
+
+  padding: 0 4px 8px;
+}
+
+.portfolio-gallery-copy {
+  max-width: 100%;
+}
+
+.portfolio-gallery-copy h2 {
+  margin-bottom: 8px;
+  font-size: 1.75rem;
+}
+
+.portfolio-gallery-copy p {
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.portfolio-gallery-meta {
+  justify-items: start;
+  gap: 2px;
+}
 }
