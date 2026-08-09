@@ -1264,18 +1264,6 @@ const portfolioProjects = {
         src: "assets/images/portfolio/hidrante-image.jpg",
         alt: "Proyecto Hidrante",
       },
-
-      {
-        type: "image",
-        src: "assets/images/portfolio/hidrante/hidrante-01.jpg",
-        alt: "Hidrante View 1",
-      },
-
-      {
-        type: "image",
-        src: "assets/images/portfolio/hidrante/hidrante-02.jpg",
-        alt: "Hidrante View 2",
-      },
     ],
   },
 
