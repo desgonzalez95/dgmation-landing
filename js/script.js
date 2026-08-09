@@ -793,6 +793,10 @@ function initPortfolioFilters() {
 // PORTFOLIO PROJECT DATA
 // ==============================
 const portfolioProjects = {
+
+  // ==========================================
+  // 1. VELFARE
+  // ==========================================
   velfare: {
     title: "Velfare",
     category: "Diseño UX/UI",
@@ -819,7 +823,7 @@ const portfolioProjects = {
         src: "assets/images/portfolio/velfare/velfareapp-banner-02.jpg",
         alt: "Velfare App View 2",
       },
-      
+
       {
         type: "image",
         src: "assets/images/portfolio/velfare/velfareapp-banner-03.jpg",
@@ -827,6 +831,454 @@ const portfolioProjects = {
       },
     ],
   },
+
+
+  // ==========================================
+  // 2. CORTEZ ACOSTA & ASOCIADOS
+  // ==========================================
+  "cortez-acosta": {
+    title: "Cortez Acosta & Asociados",
+    category: "Branding",
+    tagClass: "portfolio-card-tag--teal",
+    description:
+      "Rediseño de identidad visual para firma especializada en servicios administrativos, contables, financieros, fiscales y legales.",
+    year: "2024",
+
+    media: [
+      {
+        type: "image",
+        src: "assets/images/portfolio/cortezacosta-image02.jpg",
+        alt: "Proyecto Cortez Acosta & Asociados",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/cortez-acosta/cortez-acosta-image-02.webp",
+        alt: "Cortez Acosta View 1",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/cortez-acosta/cortez-acosta-image-03.webp",
+        alt: "Cortez Acosta View 2",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/cortez-acosta/cortez-acosta-image-04.webp",
+        alt: "Cortez Acosta View 3",
+      },
+    ],
+  },
+
+
+  // ==========================================
+  // 3. PISTOLA QUIRÚRGICA
+  // ==========================================
+  "pistola-quirurgica": {
+    title: "Pistola Quirúrgica",
+    category: "Modelado 3D",
+    tagClass: "portfolio-card-tag--cyan",
+    description:
+      "Modelado 3D de dispositivo médico orientado a simulación, visualización y comunicación técnica dentro del sector salud.",
+    year: "2025",
+
+    media: [
+      {
+        type: "image",
+        src: "assets/images/portfolio/pistola-image.jpg",
+        alt: "Proyecto Pistola Quirúrgica",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/pistola-quirurgica/pistola-quirurgica-02.webp",
+        alt: "Pistola Quirúrgica View 1",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/pistola-quirurgica/pistola-quirurgica-03.webp",
+        alt: "Pistola Quirúrgica View 2",
+      },
+
+      {
+        type: "video",
+        src: "assets/images/portfolio/pistola-quirurgica/pistola-quirurgica-video-01.mp4",
+      },
+    ],
+  },
+
+
+  // ==========================================
+  // 4. CELU
+  // ==========================================
+  celu: {
+    title: "Celu",
+    category: "Diseño UX/UI",
+    tagClass: "portfolio-card-tag--purple",
+    description:
+      "Diseño UX/UI de plataforma web y app que integra farmacia virtual, consultas médicas e historial clínico en una experiencia digital unificada.",
+    year: "2024",
+
+    media: [
+      {
+        type: "image",
+        src: "assets/images/portfolio/celu-image.png",
+        alt: "Proyecto Celu",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/celu/celu-app-image-02.webp",
+        alt: "Celu View 1",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/celu/celu-app-image-03.webp",
+        alt: "Celu View 2",
+      },
+    ],
+  },
+
+
+  // ==========================================
+  // 5. LA CESTA DEL CHEF
+  // ==========================================
+  "la-cesta-del-chef": {
+    title: "La Cesta del Chef",
+    category: "Branding",
+    tagClass: "portfolio-card-tag--teal",
+    description:
+      "Diseño de identidad visual y logotipo para una marca especializada en hongos gourmet, vegetales exóticos y productos selectos para amantes de la gastronomía.",
+    year: "2026",
+
+    media: [
+      {
+        type: "image",
+        src: "assets/images/portfolio/lacestadelchef-image.jpg",
+        alt: "Proyecto La Cesta del Chef",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/la-cesta-del-chef/la-cesta-del-chef-image-02.webp",
+        alt: "La Cesta del Chef View 1",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/la-cesta-del-chef/la-cesta-del-chef-image-03.webp",
+        alt: "La Cesta del Chef View 2",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/la-cesta-del-chef/la-cesta-del-chef-image-04.webp",
+        alt: "La Cesta del Chef View 3",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/la-cesta-del-chef/la-cesta-del-chef-image-05.webp",
+        alt: "La Cesta del Chef View 4",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/la-cesta-del-chef/la-cesta-del-chef-image-06.webp",
+        alt: "La Cesta del Chef View 4",
+      },
+    ],
+  },
+
+
+  // ==========================================
+  // 6. KUVIK
+  // ==========================================
+  kuvik: {
+    title: "Kuvik",
+    category: "Diseño UX/UI",
+    tagClass: "portfolio-card-tag--purple",
+    description:
+      "Sitio web diseñado para exhibir y comercializar arte digital, con una experiencia enfocada en la exploración visual.",
+    year: "2025",
+
+    media: [
+      {
+        type: "image",
+        src: "assets/images/portfolio/kuvik-image.jpg",
+        alt: "Proyecto Kuvik",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/kuvik/kuvik-image-02.webp",
+        alt: "Kuvik View 1",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/kuvik/kuvik-image-03.webp",
+        alt: "Kuvik View 2",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/kuvik/kuvik-image-04.webp",
+        alt: "Kuvik View 2",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/kuvik/kuvik-image-05.webp",
+        alt: "Kuvik View 2",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/kuvik/kuvik-image-06.webp",
+        alt: "Kuvik View 2",
+      },
+    ],
+  },
+
+
+  // ==========================================
+  // 7. JERINGA MÉDICA
+  // ==========================================
+  "jeringa-medica": {
+    title: "Jeringa Médica",
+    category: "Animación",
+    tagClass: "portfolio-card-tag--yellow",
+    description:
+      "Modelado y renderizado 3D de dispositivo médico, desarrollado para visualización de producto y comunicación visual dentro del sector salud.",
+    year: "2025",
+
+    media: [
+      {
+        type: "image",
+        src: "assets/images/portfolio/jeringa-image.jpg",
+        alt: "Proyecto Jeringa Médica",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/jeringa-medica/jeringa-medica-image-02.webp",
+        alt: "Jeringa Médica View 1",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/jeringa-medica/jeringa-medica-image-03.webp",
+        alt: "Jeringa Médica View 1",
+      },
+
+      {
+        type: "video",
+        src: "assets/images/portfolio/jeringa-medica/jeringa-medica-video-01.mp4",
+      },
+    ],
+  },
+
+
+  // ==========================================
+  // 8. MESA MÉDICA
+  // ==========================================
+  "mesa-medica": {
+    title: "Mesa Médica",
+    category: "Modelado 3D",
+    tagClass: "portfolio-card-tag--cyan",
+    description:
+      "Modelado y renderizado 3D de equipamiento médico, enfocado en la visualización detallada y comunicación visual de producto para el sector salud.",
+    year: "2025",
+
+    media: [
+      {
+        type: "image",
+        src: "assets/images/portfolio/mesamedica-image.jpg",
+        alt: "Proyecto Mesa Médica",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/mesa-medica/mesa-medica-image-02.webp",
+        alt: "Mesa Médica View 1",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/mesa-medica/mesa-medica-image-03.webp",
+        alt: "Mesa Médica View 2",
+      },
+
+      {
+        type: "video",
+        src: "assets/images/portfolio/mesa-medica/mesa-medica-video-01.mp4",
+      },
+    ],
+  },
+
+
+  // ==========================================
+  // 9. SURA GAME
+  // ==========================================
+  "sura-game": {
+    title: "Sura Game",
+    category: "Animación",
+    tagClass: "portfolio-card-tag--yellow",
+    description:
+      "Propuesta visual y modelado 3D para el desarrollo de un videojuego de SURA México, incluyendo la creación de escenarios y recursos gráficos.",
+    year: "2024",
+
+    media: [
+      {
+        type: "image",
+        src: "assets/images/portfolio/sura-image.jpg",
+        alt: "Proyecto Sura Game",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/sura-game/sura-game-image-02.webp",
+        alt: "Sura Game View 1",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/sura-game/sura-game-image-03.webp",
+        alt: "Sura Game View 2",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/sura-game/sura-game-image-04.webp",
+        alt: "Sura Game View 3",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/sura-game/sura-game-image-05.webp",
+        alt: "Sura Game View 4",
+      },
+    ],
+  },
+
+
+  // ==========================================
+  // 10. SERANOVA APP
+  // ==========================================
+  "seranova-app": {
+    title: "Seranova App",
+    category: "Diseño UX/UI",
+    tagClass: "portfolio-card-tag--purple",
+    description:
+      "Diseño UX/UI de aplicación enfocada en bienestar y nutrición, creando una experiencia digital intuitiva para los usuarios de Seranova LATAM.",
+    year: "2025",
+
+    media: [
+      {
+        type: "image",
+        src: "assets/images/portfolio/seranova-image.jpg",
+        alt: "Proyecto Seranova App",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/seranova-app/seranova-app-image-02.webp",
+        alt: "Seranova App View 1",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/seranova-app/seranova-app-image-03.webp",
+        alt: "Seranova App View 2",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/seranova-app/seranova-app-image-04.webp",
+        alt: "Seranova App View 3",
+      },
+    ],
+  },
+
+
+  // ==========================================
+  // 11. NUCLO WEALTH
+  // ==========================================
+  "nuclo-wealth": {
+    title: "Nuclo Wealth",
+    category: "Diseño UX/UI",
+    tagClass: "portfolio-card-tag--purple",
+    description:
+      "Rediseño de sitio web para firma especializada en administración y crecimiento patrimonial de familias de alto patrimonio, con una experiencia digital clara y sofisticada.",
+    year: "2026",
+
+    media: [
+      {
+        type: "image",
+        src: "assets/images/portfolio/nuclowealth-image.jpg",
+        alt: "Proyecto Nuclo Wealth",
+      },
+    ],
+  },
+
+
+  // ==========================================
+  // 12. DYNAMIC METERS
+  // ==========================================
+  "dynamic-meters": {
+    title: "Dynamic Meters",
+    category: "Branding",
+    tagClass: "portfolio-card-tag--teal",
+    description:
+      "Rediseño de identidad visual y logotipo para empresa especializada en el suministro de medidores a grandes cadenas comerciales en México.",
+    year: "2025",
+
+    media: [
+      {
+        type: "image",
+        src: "assets/images/portfolio/dynamicmeters-image.jpg",
+        alt: "Proyecto Dynamic Meters",
+      },
+    ],
+  },
+
+
+  // ==========================================
+  // 13. HIDRANTE
+  // ==========================================
+  hidrante: {
+    title: "Hidrante",
+    category: "Modelado 3D",
+    tagClass: "portfolio-card-tag--cyan",
+    description:
+      "Modelado y renderizado 3D de hidrante desarrollado como asset para videojuego.",
+    year: "2026",
+
+    media: [
+      {
+        type: "image",
+        src: "assets/images/portfolio/hidrante-image.jpg",
+        alt: "Proyecto Hidrante",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/hidrante/hidrante-01.jpg",
+        alt: "Hidrante View 1",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/hidrante/hidrante-02.jpg",
+        alt: "Hidrante View 2",
+      },
+    ],
+  },
+
 };
 
 // ==============================
@@ -848,6 +1300,10 @@ function initPortfolioGallery() {
 
   const galleryImage = document.getElementById(
     "portfolioGalleryImage"
+  );
+
+  const galleryVideo = document.getElementById(
+    "portfolioGalleryVideo"
   );
 
   const prevButton = document.getElementById("portfolioGalleryPrev");
@@ -873,6 +1329,7 @@ function initPortfolioGallery() {
     !galleryTag ||
     !galleryCounter ||
     !galleryImage ||
+    !galleryVideo ||
     !prevButton ||
     !nextButton ||
     !galleryTitle ||
@@ -895,6 +1352,14 @@ function initPortfolioGallery() {
     galleryCounter.textContent = `${current} / ${total}`;
   };
 
+  const resetVideo = () => {
+    galleryVideo.pause();
+    galleryVideo.currentTime = 0;
+    galleryVideo.removeAttribute("src");
+    galleryVideo.removeAttribute("poster");
+    galleryVideo.load();
+  };
+
   const renderMedia = () => {
     if (!currentProject) return;
 
@@ -904,12 +1369,22 @@ function initPortfolioGallery() {
 
     updateCounter();
 
+    // Primera imagen: ocultar izquierda
     prevButton.hidden = currentMediaIndex === 0;
 
+    // Última imagen: ocultar derecha
     nextButton.hidden =
       currentMediaIndex === currentProject.media.length - 1;
 
+    // ==============================
+    // IMAGEN
+    // ==============================
     if (mediaItem.type === "image") {
+      resetVideo();
+
+      galleryVideo.hidden = true;
+      galleryImage.hidden = false;
+
       galleryImage.classList.add("is-changing");
 
       window.setTimeout(() => {
@@ -922,7 +1397,36 @@ function initPortfolioGallery() {
             galleryImage.classList.remove("is-changing");
           });
         };
-      }, 280);
+      }, 180);
+
+      return;
+    }
+
+    // ==============================
+    // VIDEO
+    // ==============================
+    if (mediaItem.type === "video") {
+      galleryImage.hidden = true;
+      galleryVideo.hidden = false;
+
+      galleryVideo.pause();
+
+      galleryVideo.src = mediaItem.src;
+
+      if (mediaItem.poster) {
+        galleryVideo.poster = mediaItem.poster;
+      } else {
+        galleryVideo.removeAttribute("poster");
+      }
+
+      galleryVideo.currentTime = 0;
+
+      galleryVideo.load();
+
+      galleryVideo.play().catch(() => {
+        // Si el navegador bloquea autoplay,
+        // el video simplemente queda disponible.
+      });
     }
   };
 
@@ -970,6 +1474,11 @@ function initPortfolioGallery() {
     modal.setAttribute("aria-hidden", "true");
 
     document.body.classList.remove("modal-open");
+
+    resetVideo();
+
+    galleryVideo.hidden = true;
+    galleryImage.hidden = false;
 
     if (lastFocusedElement) {
       lastFocusedElement.focus();

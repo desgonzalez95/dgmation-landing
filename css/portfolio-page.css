@@ -576,6 +576,11 @@
   object-fit: contain;
 }
 
+.portfolio-gallery-media img[hidden],
+.portfolio-gallery-media video[hidden] {
+  display: none !important;
+}
+
 .portfolio-gallery-media img {
   transition:
     opacity 0.42s ease,
