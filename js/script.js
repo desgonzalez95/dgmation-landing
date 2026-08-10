@@ -906,6 +906,11 @@ const portfolioProjects = {
         type: "video",
         src: "assets/images/portfolio/pistola-quirurgica/pistola-quirurgica-video-01.mp4",
       },
+
+      {
+        type: "video",
+        src: "assets/images/portfolio/pistola-quirurgica/pistola-quirurgica-video-02.mp4",
+      },
     ],
   },
 
