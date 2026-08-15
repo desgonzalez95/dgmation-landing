@@ -1272,6 +1272,31 @@ const portfolioProjects = {
     ],
   },
 
+  // ==========================================
+  // 14. FLEXIA
+  // ==========================================
+  flexia: {
+    title: "Flexia",
+    category: "Animación",
+    tagClass: "portfolio-card-tag--yellow",
+    description:
+      "Video Promo para Flexia Payments, la aplicación cashless para casinos que permite administrar fondos, realizar pagos, transferir dinero para jugar, retirar ganancias y obtener recompensas desde una experiencia digital segura y centralizada.",
+    year: "2024",
+
+    media: [
+      {
+        type: "image",
+        src: "assets/images/portfolio/flexia-image-01.webp",
+        alt: "Proyecto Flexia",
+      },
+
+      {
+        type: "video",
+        src: "assets/images/portfolio/flexia/flexia-video-01.mp4",
+      },
+    ],
+  },
+
 };
 
 // ==============================
