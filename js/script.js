@@ -853,20 +853,38 @@ const portfolioProjects = {
 
       {
         type: "image",
-        src: "assets/images/portfolio/cortez-acosta/cortez-acosta-image-02.webp",
+        src: "assets/images/portfolio/cortez-acosta/cortez-acosta-image-07.webp",
         alt: "Cortez Acosta View 1",
       },
 
       {
         type: "image",
-        src: "assets/images/portfolio/cortez-acosta/cortez-acosta-image-03.webp",
+        src: "assets/images/portfolio/cortez-acosta/cortez-acosta-image-08.webp",
         alt: "Cortez Acosta View 2",
       },
 
       {
         type: "image",
-        src: "assets/images/portfolio/cortez-acosta/cortez-acosta-image-04.webp",
+        src: "assets/images/portfolio/cortez-acosta/cortez-acosta-image-06.webp",
         alt: "Cortez Acosta View 3",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/cortez-acosta/cortez-acosta-image-05.webp",
+        alt: "Cortez Acosta View 4",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/cortez-acosta/cortez-acosta-image-02.webp",
+        alt: "Cortez Acosta View 5",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/cortez-acosta/cortez-acosta-image-04.webp",
+        alt: "Cortez Acosta View 6",
       },
     ],
   },
