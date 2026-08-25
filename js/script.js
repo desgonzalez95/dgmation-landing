@@ -986,32 +986,44 @@ const portfolioProjects = {
 
       {
         type: "image",
-        src: "assets/images/portfolio/la-cesta-del-chef/la-cesta-del-chef-image-02.webp",
+        src: "assets/images/portfolio/la-cesta-del-chef/la-cesta-del-chef-parada-autobus.jpg",
         alt: "La Cesta del Chef View 1",
       },
 
       {
         type: "image",
-        src: "assets/images/portfolio/la-cesta-del-chef/la-cesta-del-chef-image-03.webp",
+        src: "assets/images/portfolio/la-cesta-del-chef/la-cesta-del-chef-billboard.jpg",
         alt: "La Cesta del Chef View 2",
       },
 
       {
         type: "image",
-        src: "assets/images/portfolio/la-cesta-del-chef/la-cesta-del-chef-image-04.webp",
+        src: "assets/images/portfolio/la-cesta-del-chef/la-cesta-del-chef-macbook.jpg",
         alt: "La Cesta del Chef View 3",
       },
 
       {
         type: "image",
-        src: "assets/images/portfolio/la-cesta-del-chef/la-cesta-del-chef-image-05.webp",
+        src: "assets/images/portfolio/la-cesta-del-chef/la-cesta-del-chef-image-02.webp",
         alt: "La Cesta del Chef View 4",
       },
 
       {
         type: "image",
+        src: "assets/images/portfolio/la-cesta-del-chef/la-cesta-del-chef-image-03.webp",
+        alt: "La Cesta del Chef View 5",
+      },
+
+      {
+        type: "image",
+        src: "assets/images/portfolio/la-cesta-del-chef/la-cesta-del-chef-image-04.webp",
+        alt: "La Cesta del Chef View 6",
+      },
+
+      {
+        type: "image",
         src: "assets/images/portfolio/la-cesta-del-chef/la-cesta-del-chef-image-06.webp",
-        alt: "La Cesta del Chef View 4",
+        alt: "La Cesta del Chef View 7",
       },
     ],
   },
