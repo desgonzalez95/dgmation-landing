@@ -1170,25 +1170,25 @@ const portfolioProjects = {
     media: [
       {
         type: "image",
-        src: "assets/images/portfolio/sura-image.jpg",
+        src: "assets/images/portfolio/sura-game/sura-game-image-02.webp",
         alt: "Proyecto Sura Game",
       },
 
       {
         type: "image",
-        src: "assets/images/portfolio/sura-game/sura-game-image-02.webp",
+        src: "assets/images/portfolio/sura-game/sura-game-image-03.webp",
         alt: "Sura Game View 1",
       },
 
       {
         type: "image",
-        src: "assets/images/portfolio/sura-game/sura-game-image-03.webp",
+        src: "assets/images/portfolio/sura-game/sura-game-image-04.webp",
         alt: "Sura Game View 2",
       },
 
       {
         type: "image",
-        src: "assets/images/portfolio/sura-game/sura-game-image-04.webp",
+        src: "assets/images/portfolio/sura-image.jpg",
         alt: "Sura Game View 3",
       },
 
