@@ -191,7 +191,7 @@
 .portfolio-editorial-card {
   position: relative;
   overflow: hidden;
-  border-radius: 14px;
+  border-radius: 18px;
   background: #16131f;
   height: 100%;
 }
@@ -318,7 +318,7 @@
 
 .portfolio-editorial-card:hover .portfolio-editorial-link img {
   transform: scale(1.04);
-  filter: saturate(1.02);
+  filter: grayscale(85%) brightness(1);
 }
 
 /* =========================
